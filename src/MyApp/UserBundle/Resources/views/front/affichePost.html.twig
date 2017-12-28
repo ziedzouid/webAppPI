@@ -1,0 +1,260 @@
+{% extends "@MyAppUser/Conducteur/conduc_home.html.twig" %}
+{% block body_content %}
+<section class="main-content" id="list">
+
+    <div class="container">
+        <div class="row">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+
+            <div class="col-md-9 col-sm-12 col-xs-12">
+
+                <div class="page-content">
+
+                    <div class="articles">
+
+
+
+                    </div><!-- end .articles -->
+
+                    <div class="post-pagination pagination-margin clearfix">
+
+                        <div class="prev pull-left">
+
+                            <a href="#">
+                                <i class="fa fa-chevron-left"></i>
+                                Prev article
+                            </a>
+
+                        </div>
+
+                        <div class="next pull-right">
+
+                            <a href="#">
+                                Next article
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="comments-area" id="comments">
+
+                        <!-- Begin Comments -->
+
+                        <h3>Posts</h3>
+                  <p>Here are the latest Posts Searching for a ride:</p><br>
+                        {% for post in posts %}
+
+                        <ol class="commentslist">
+
+                            <li id="comment-1">
+
+                                <article class="comment even thread-even depth-1 clearfix">
+
+                                    <header>
+
+                                        <div class="comment-user-name">
+                                            <a href="#"> {{ post.user }} </a>
+                                        </div>
+
+                                        <span >Posted on {% if post.Date %}{{ post.date|date('Y-m-d H:i:s') }}{% endif %} </span>
+
+                                    </header>
+
+                                    <figure class="comment-avatar">
+                                        <img alt='' src="{{asset('templates/img/'~post.user.avatar)}}" class='avatar avatar-80 photo avatar-default' height='80' width='80' />
+                                    </figure>
+                                    <div id="li">
+
+                                    <p>Hello I'm searching For a ride from {{ post.depart }} to {{ post.arrive }}
+                                        I appreciate if our meeting woud be in {{ post.contenu }} </p>
+                                    </div>
+                                    <a href="{{ path('Addcomment',{ 'idPost':post.id}) }}" class='comment-reply-link btn green-color' id="add">Reply</a>
+
+                                    <a  href="{{ path('showcomment',{ 'idPost':post.id}) }}"  id="loads" class='comment-reply-link btn green-color'>See Comments</a>
+
+
+
+                                </article>
+                                <table class = "table">
+                                    <tbody id = "resultat"></tbody>
+                                </table>
+
+                                                            </li>
+
+                                                        </ul><!-- end .children -->
+                                                    </li>
+                                                </ul><!-- end .children -->
+
+                                            </li>
+                                        </ul><!-- end .children -->
+
+                                    </li>
+                                </ul><!-- end .children -->
+                            </li>
+
+                        </ol><!-- end .commentslist -->
+                        {% endfor %}
+                        <div class="comment-nav clearfix">
+                            <div class="prev pull-left">
+
+                                <a href="#">
+                                    <i class="fa fa-chevron-left"></i>
+                                    Prev Comments
+                                </a>
+
+                            </div>
+                            <div class="next pull-right">
+
+                                <a href="#">
+                                    Next Comments
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+
+
+            </div><!-- end .col-md-9 -->
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+
+                <aside id="sidebar" class="main-sidebar">
+
+                    <div class="search-widget sidebar-widget">
+
+                        <h4 class="widget-title">Search</h4>
+
+                        <div class="widget-content">
+                            <form class="idealforms search-form adaptive" autocomplete="off" novalidate="" action="">
+                                <div class="field idealforms-field idealforms-field-email">
+                                    <input type="text" placeholder="Text" name="search">
+                                </div>
+                                <div class="field buttons">
+                                    <button class="btn btn-lg blue-color" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div><!-- end .widget-content -->
+
+                    </div><!-- end .archives-widget -->
+
+                    <div class="archives-widget sidebar-widget">
+
+                        <h4 class="widget-title">Archives</h4>
+
+                        <div class="widget-content">
+                            <ul>
+                                <li><a href="#">November 2013</a> <span>(2)</span></li>
+                                <li><a href="#">October 2013</a> <span>(5)</span></li>
+                                <li><a href="#">September 2013</a> <span>(10)</span></li>
+                                <li><a href="#">August 2013</a> <span>(9)</span></li>
+                                <li><a href="#">July 2013</a> <span>(10)</span></li>
+                                <li><a href="#">June 2013</a> <span>(11)</span></li>
+                            </ul>
+                        </div><!-- end .widget-content -->
+
+                    </div><!-- end .archives-widget -->
+
+                    <div class="calendar sidebar-widget">
+
+                        <h4 class="widget-title">Calendar</h4>
+
+                        <div class="widget-content">
+                            <div id="calendar_wrap">
+
+                                <div class="calendar-nav">
+                                    <div  class="calendar-prev">
+                                        <a href="#"></a>
+                                    </div>
+                                    <div class="calendar-next">
+                                        <a href="#"></a>
+                                    </div>
+                                </div>
+
+                                <table id="wp-calendar">
+                                    <caption>April 2014</caption>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" title="Monday">Mo</th>
+                                        <th scope="col" title="Tuesday">Tu</th>
+                                        <th scope="col" title="Wednesday">We</th>
+                                        <th scope="col" title="Thursday">Th</th>
+                                        <th scope="col" title="Friday">Fr</th>
+                                        <th scope="col" title="Saturday">Sa</th>
+                                        <th scope="col" title="Sunday">Su</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="1" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td id="today"><a href="">26</a></td><td>27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28</td><td>29</td><td>30</td>
+                                        <td class="pad" colspan="4">&nbsp;</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div><!-- end .calendar_wrap -->
+                        </div><!-- end .widget-content -->
+
+                    </div><!-- end .sidebar-widget -->
+
+                </aside><!-- end .main-sidebar -->
+
+            </div><!-- end .col-md-3 -->
+
+        </div><!-- end .row -->
+    </div><!-- end .container -->
+        </div>
+    </div>
+</section><!-- end .main-content -->
+
+
+    <script language = "javascript"
+            src = "{{ asset('templates/js/jquery-3.2.1.min.js') }}"></script>
+
+    <script language = "javascript">
+        $(document).ready(function(){
+
+
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#list *").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+                });
+            });
+            $("#add").on("click", function() {
+                $("#list").hide();
+                $("#ajcomment").show();
+
+            });
+
+        });
+    </script>
+    {% block stylesheets %}
+        <style>
+            .table { border-collapse: collapse; }
+            .table th, td {
+                border-bottom: 1px solid #ddd;
+                width: 250px;
+                text-align: left;
+                align: left;
+            }
+        </style>
+    {% endblock %}
+
+{% endblock %}

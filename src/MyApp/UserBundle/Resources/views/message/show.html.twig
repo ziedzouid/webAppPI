@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body_content %}
+    <h1>Message</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ message.id }}</td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>{{ message.source }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ message.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Datemessage</th>
+                <td>{% if message.dateMessage %}{{ message.dateMessage|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Verif</th>
+                <td>{% if message.verif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('message_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('message_edit', { 'id': message.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

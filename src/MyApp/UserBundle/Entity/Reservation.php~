@@ -1,0 +1,53 @@
+<?php
+
+namespace MyApp\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="trajet_id", columns={"trajet_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class Reservation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_reservation", type="datetime", nullable=false)
+     */
+    private $dateReservation = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \Trajet
+     *
+     * @ORM\ManyToOne(targetEntity="Trajet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="trajet_id", referencedColumnName="id")
+     * })
+     */
+    private $trajet;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+

@@ -1,0 +1,67 @@
+{% extends "@MyAppUser/Conducteur/conduc_home.html.twig" %}
+{% block body_content %}
+    <div class="container">
+    <div class="media">
+
+    <div class="media-left">
+        <img alt='' src="{{asset('templates/img/'~post.user.avatar)}}" class="media-object" style="width:45px">
+    </div>
+
+    <div class="media-body">
+    <h4 class="media-heading">{{post.user  }} <small><i>{% if post.date %}{{ post.date|date('Y-m-d H:i:s') }}{% endif %}</i></small></h4>
+
+    <p>Hello I'm searching For a ride from {{ post.depart }} to {{ post.arrive }}
+        I appreciate if our meeting would be in {{ post.contenu }}</p>
+
+    {% for comment in comments %}
+                     <div class="media">
+                <div class="media-left">
+                    <img alt='' src="{{asset('templates/img/'~comment.user.avatar)}}" class="media-object" style="width:45px">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ comment.user  }}<small><i></i></small>{% if comment.datePost %}{{ comment.datePost|date('Y-m-d H:i:s') }}{% endif %}</h4>
+                    <div class="form-group" id="comment">
+
+                        <p>{{ comment.content }}</p>
+
+                    </div>
+
+                    {% if(comment.user.id==user.id) %}
+
+                        <div id="hello" class="js">
+
+                            <a   href="{{ path('editcomment',{ 'idcomment':comment.id}) }}" class='comment-reply-link btn blue-color' id="c"><i class="fa fa-edit"></i> Edit</a>
+
+                            <a  href="{{ path('removecomment',{ 'idcomment':comment.id}) }}"  id="b" class='blue-reply-link btn blue-color'><i class="fa fa-remove"></i> Remove</a>
+                        </div>
+
+                    {% endif %}
+
+
+
+                </div>
+                </div>
+    {% endfor %}
+
+
+    </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+                     </div>
+
+    </div>
+
+    <div class="">
+        <a href="{{ path('returncomment') }}" class='comment-reply-link btn blue-color' id="ad"><i class="fa navbar-left"></i> Go Back</a>
+
+    </div>
+
+
+
+
+{% endblock body_content %}

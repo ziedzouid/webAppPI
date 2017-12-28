@@ -1,0 +1,59 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block registration_content %}
+
+
+
+    <form action="{{ path('fos_user_registration_register') }}" method="POST">
+        <div class="form-group" id="fos_user_registration_form">
+            <div class="log-header">
+                <span class="log-in">Sign up</span>
+            </div>
+
+            <div class="field">
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans } }) }}
+               {{ form_errors(form.email) }}
+                <span class="error"></span>
+            </div>
+
+            <div class="field">
+                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+                {{ form_errors(form.username) }}
+                <span class="error"></span>
+            </div>
+
+            <div class="field">
+                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'form.password'|trans } }) }}
+                 {{ form_errors(form.plainPassword.first) }}
+                <span class="error"></span>
+            </div>
+
+
+
+            <div class="field">
+                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'form.password_confirmation'|trans } }) }}
+                 {{ form_errors(form.plainPassword.second) }}
+                <span class="error"></span>
+            </div>
+
+            <div align="center">
+            {{ form_rest(form) }}
+            </div>
+
+        </div>
+        <div class="field buttons">
+            <input class="submit btn green-color" type="submit" value="{{ 'registration.submit'|trans }}">
+        </div>
+
+        <div class="clearfix"></div>
+    </form>
+
+
+
+
+
+
+
+{% endblock %}
+
+

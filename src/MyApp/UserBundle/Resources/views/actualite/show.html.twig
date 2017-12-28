@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body_content %}
+    <h1>Actualite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ actualite.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ actualite.type }}</td>
+            </tr>
+            <tr>
+                <th>Rubrique</th>
+                <td>{{ actualite.rubrique }}</td>
+            </tr>
+            <tr>
+                <th>Dateactualite</th>
+                <td>{% if actualite.dateActualite %}{{ actualite.dateActualite|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ actualite.contenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('actualite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('actualite_edit', { 'id': actualite.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

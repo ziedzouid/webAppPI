@@ -1,0 +1,74 @@
+<?php
+
+namespace MyApp\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Message
+ *
+ * @ORM\Table(name="message", indexes={@ORM\Index(name="to_id", columns={"to_id"}), @ORM\Index(name="from_id", columns={"from_id"})})
+ * @ORM\Entity
+ */
+class Message
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="source", type="string", length=20, nullable=false)
+     */
+    private $source;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text", nullable=false)
+     */
+    private $contenu;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_message", type="datetime", nullable=false)
+     */
+    private $dateMessage = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="verif", type="boolean", nullable=false)
+     */
+    private $verif = '0';
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="to_id", referencedColumnName="id")
+     * })
+     */
+    private $to;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="from_id", referencedColumnName="id")
+     * })
+     */
+    private $from;
+
+
+}
+

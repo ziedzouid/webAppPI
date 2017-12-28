@@ -1,0 +1,265 @@
+{% extends 'base.html.twig' %}
+{% block body_content %}
+
+    <section class="main-content">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="page-sub-title textcenter">
+                        <h2>Blog</h2>
+                        <div class="line"></div>
+                    </div><!-- end .page-sub-title -->
+
+                    <input class="" type="button" name="new-act">
+
+                </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+                <div class="col-md-9 col-sm-12 col-xs-12">
+
+                    <div class="page-content add-new-ride">
+
+                        <div style="position: sticky;top:10px ; border-radius: 12px;background-color: cyan; width: 100px;margin: auto"
+                             class="user-log">
+                            <a data-toggle="modal" data-target="#newfeed">
+                                NEW FEED
+                            </a>
+                        </div>
+                        <div class="articles">
+
+                            {% for actualite in actualites %}
+                                <script src="{{ asset ('templates/js/jquery-3.2.1.min.js') }}"></script>
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $("#{{ actualite.id*15 }}").click(function () {
+                                            $("#{{ actualite.id * 40 }}").hide();
+                                            //$("#edit-act").show();
+                                        });
+
+                                    });
+                                </script>
+                                <center>
+                                    <article class="article clearfix" id="{{ actualite.id * 40 }}">
+                                        {% if actualite.user.id != us %}
+                                        <div>
+                                            <a href="{{ path('bann_user',{'id':actualite.id}) }}" id="{{ actualite.id *15}}"
+                                               onclick="return confirm('Voulez vous signaler cette Actualite?')">
+                                                <img src="{{ asset ('templates/img/delete.png') }}" width="40px"
+                                                     height="40px"></a>
+                                        </div>
+                                        {% endif %}
+
+                                        <figure class="ride-image">
+                                            <img style=" border: 1px solid #ddd; border-radius: 4px;padding: 5px; width: 800px;"
+                                                 src="{{ asset (actualite.type) }} "/>
+
+                                        </figure>
+
+                                        <header>
+
+
+                                            <ul class="article-meta">
+
+
+                                                <li class="article-date">
+                                                    <a href="#" class="tooltip-link" data-original-title="Date"
+                                                       data-toggle="tooltip">
+                                                        <i class="fa fa-calendar"></i>
+                                                        {% if actualite.dateActualite %}{{ actualite.dateActualite|date('Y-m-d H:i:s') }}{% endif %}
+                                                    </a>
+                                                </li><!-- end .article-date -->
+
+
+                                                <li class="article-author">
+                                                    <a href="#" class="tooltip-link" data-original-title="Post by"
+                                                       data-toggle="tooltip">
+                                                        <i class="fa fa-user"></i>
+                                                        {% if actualite.user is null %}
+                                                            Inconnue
+                                                        {% else %}
+                                                            {{ actualite.user.username }}
+                                                        {% endif %}
+
+                                                    </a>
+                                                </li><!-- end .article-author -->
+
+                                                <li class="article-tag">
+                                                    <a href="#" class="tooltip-link" data-original-title="Category"
+                                                       data-toggle="tooltip">
+                                                        <i class="fa fa-tags"></i>
+                                                        {{ actualite.rubrique }}
+                                                    </a>
+                                                </li><!-- end .article-tag -->
+
+                                            </ul><!-- end .article-meta -->
+
+                                        </header><!-- end header -->
+
+                                        <div class="article-content">
+
+                                            <p> {{ actualite.contenu }}</p>
+
+
+                                        </div><!-- end .article-content -->
+
+
+                                    </article><!-- end .article -->
+                                </center>
+                                <br><br><br>
+
+                            {% endfor %}
+
+
+                        </div><!-- end .articles -->
+
+                        <div class="post-pagination pagination-margin clearfix">
+
+                            <div class="prev pull-left">
+                                <a href="#">
+                                    <i class="fa fa-chevron-left"></i>
+                                    Prev
+                                </a>
+                            </div>
+
+                            <div class="next pull-right">
+                                <a href="#">
+                                    Next
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+
+                        </div><!-- end .post-pagination -->
+
+                    </div><!-- end .page-content -->
+
+                </div><!-- end .cal-md-9 -->
+
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="widget-content">
+                        <form class="idealforms search-form adaptive" autocomplete="off" novalidate=""
+                              action="{{ path('my_actuality') }}">
+                            <div class="field buttons">
+                                <button class="btn btn-lg green-color" type="submit">My Actualities</button>
+                            </div>
+                        </form>
+                    </div><!-- end .widget-content -->
+                    <br><br>
+
+                    <aside id="sidebar" class="main-sidebar">
+
+                        <div class="search-widget sidebar-widget">
+
+                            <h4 class="widget-title">Search</h4>
+
+                            <div class="widget-content">
+                                <form class="idealforms search-form adaptive" autocomplete="off" novalidate=""
+                                      action="">
+                                    <div class="field idealforms-field idealforms-field-email">
+                                        <input type="text" placeholder="Text" name="search">
+                                    </div>
+                                    <div class="field buttons">
+                                        <button class="btn btn-lg blue-color" type="submit">Search</button>
+                                    </div>
+                                </form>
+                            </div><!-- end .widget-content -->
+
+                        </div><!-- end .archives-widget -->
+
+
+
+                        <div class="calendar sidebar-widget">
+
+                            <h4 class="widget-title">Calendar</h4>
+
+                            <div class="widget-content">
+                                <div id="calendar_wrap">
+
+                                    <div class="calendar-nav">
+                                        <div class="calendar-prev">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="calendar-next">
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+
+                                    <table id="wp-calendar">
+                                        <caption>April 2014</caption>
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" title="Monday">Mo</th>
+                                            <th scope="col" title="Tuesday">Tu</th>
+                                            <th scope="col" title="Wednesday">We</th>
+                                            <th scope="col" title="Thursday">Th</th>
+                                            <th scope="col" title="Friday">Fr</th>
+                                            <th scope="col" title="Saturday">Sa</th>
+                                            <th scope="col" title="Sunday">Su</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="1" class="pad">&nbsp;</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                            <td>6</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>8</td>
+                                            <td>9</td>
+                                            <td>10</td>
+                                            <td>11</td>
+                                            <td>12</td>
+                                            <td>13</td>
+                                        </tr>
+                                        <tr>
+                                            <td>14</td>
+                                            <td>15</td>
+                                            <td>16</td>
+                                            <td>17</td>
+                                            <td>18</td>
+                                            <td>19</td>
+                                            <td>20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>21</td>
+                                            <td>22</td>
+                                            <td>23</td>
+                                            <td>24</td>
+                                            <td>25</td>
+                                            <td id="today"><a href="">26</a></td>
+                                            <td>27</td>
+                                        </tr>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>29</td>
+                                            <td>30</td>
+                                            <td class="pad" colspan="4">&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div><!-- end .calendar_wrap -->
+                            </div><!-- end .widget-content -->
+
+                        </div><!-- end .sidebar-widget -->
+
+                    </aside><!-- end .main-sidebar -->
+
+                </div><!-- end .col-md-3 -->
+
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+
+    </section><!-- end .main-content -->
+    {% block ajout_act_content %}
+        {{ include('@MyAppUser/actualite/ajout_actualite.html.twig') }}
+    {% endblock %}
+
+{% endblock %}

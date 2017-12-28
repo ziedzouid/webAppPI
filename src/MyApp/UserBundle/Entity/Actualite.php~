@@ -1,0 +1,74 @@
+<?php
+
+namespace MyApp\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Actualite
+ *
+ * @ORM\Table(name="actualite", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="circle_id", columns={"circle_id"})})
+ * @ORM\Entity
+ */
+class Actualite
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="text", length=65535, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rubrique", type="string", length=100, nullable=false)
+     */
+    private $rubrique;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_actualite", type="datetime", nullable=false)
+     */
+    private $dateActualite = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="string", length=255, nullable=false)
+     */
+    private $contenu;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Circle
+     *
+     * @ORM\ManyToOne(targetEntity="Circle")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="circle_id", referencedColumnName="id")
+     * })
+     */
+    private $circle;
+
+
+}
+

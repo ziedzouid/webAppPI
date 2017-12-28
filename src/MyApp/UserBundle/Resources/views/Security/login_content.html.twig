@@ -1,0 +1,63 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    {% include '::base.html.twig' %}
+    <div class="alert alert-error">
+        <center>
+            <label style="color: orangered ; font-size: medium">   {{ error.messageKey|trans(error.messageData, 'security') }}</label>
+        </center>
+        <span class="close"></span>
+    </div>
+
+{% endif %}
+<!--<a data-toggle="modal" data-target="#loginModal">-->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div><!-- end .modal-header -->
+
+            <div class="modal-body">
+                <form novalidate autocomplete="off" class="idealforms login"
+                      action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                    {% endif %}
+                    <div class="log-header">
+                        <span class="log-in">Log in</span>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" id="username" name="_username" required="required" placeholder="Username">
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="field">
+                        <input class="" type="password" id="password" name="_password" required="required"
+                               placeholder="Password">
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="checkbox checkbox-inline">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>Remember Me
+                    </div>
+                    <div class="field buttons">
+                        <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"
+                                class="submit btn green-color">Log in
+                        </button>
+                    </div>
+
+                    <a href="#" class="log-twitter twitter"><i class="fa fa-twitter"></i>Twitter</a>
+                    <a href="#" class="log-facebook facebook"><i class="fa fa-facebook"></i>Facebook</a>
+
+                    <div class="clearfix"></div>
+
+                </form><!-- end .login -->
+            </div><!-- end .modal-body -->
+
+        </div><!-- end .modal-content -->
+    </div><!-- end .modal-dialog -->
+</div><!-- end .modal -->
+

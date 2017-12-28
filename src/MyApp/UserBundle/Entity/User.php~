@@ -1,0 +1,99 @@
+<?php
+
+namespace MyApp\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="circle_id", columns={"circle_id"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=20, nullable=true)
+     */
+    private $sexe;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="date", nullable=true)
+     */
+    private $dateNaissance;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="telephone", type="integer", nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=20, nullable=true)
+     */
+    private $mdp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=200, nullable=true)
+     */
+    private $avatar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=255, nullable=true)
+     */
+    private $role;
+
+    /**
+     * @var \Circle
+     *
+     * @ORM\ManyToOne(targetEntity="Circle")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="circle_id", referencedColumnName="id")
+     * })
+     */
+    private $circle;
+
+
+}
+

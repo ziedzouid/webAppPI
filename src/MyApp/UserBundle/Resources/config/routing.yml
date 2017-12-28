@@ -1,0 +1,132 @@
+my_app_user_actualite:
+    resource: "@MyAppUserBundle/Resources/config/routing/actualite.yml"
+    prefix:   /actualite
+
+my_app_user_message:
+    resource: "@MyAppUserBundle/Resources/config/routing/message.yml"
+    prefix:   /message
+
+my_app_user_feedback:
+    resource: "@MyAppUserBundle/Resources/config/routing/feedback.yml"
+    prefix:   /feedback
+
+my_app_user_homepage:
+    path:     /
+    defaults: { _controller: MyAppUserBundle:Default:index }
+
+admin_dashboard:
+    path:     /admin
+    defaults: { _controller: MyAppUserBundle:Default:AdminDashboard }
+
+passenger_home:
+    path:     /homepass
+    defaults: { _controller: MyAppUserBundle:Default:PassagerAcess }
+
+conducteur_home:
+    path:     /homecond
+    defaults: { _controller: MyAppUserBundle:Default:ConducteurAcess }
+
+actualite_newAct:
+    path:     /newAct
+    defaults: { _controller: MyAppUserBundle:Actualite:newAct }
+    methods:  [GET, POST]
+
+dashboard_client:
+    path:     /dashclient
+    defaults: { _controller: MyAppUserBundle:Default:DashboardCl }
+    methods:  [GET, POST]
+
+edit_profile:
+    path:     /editprofile
+    defaults: { _controller: MyAppUserBundle:DashboardClient:editProfile }
+    methods:  [GET, POST]
+
+list_users:
+    path:     /listusers
+    defaults: { _controller: MyAppUserBundle:DashBoardAdmin:listUsers }
+    methods:  [GET, POST]
+
+delete_user:
+    path:     /deleteuser/{id}
+    defaults: { _controller: MyAppUserBundle:DashBoardAdmin:deleteUser }
+    methods:  [GET, POST]
+Post_details_page:
+    path:     /Post
+    defaults: { _controller: MyAppUserBundle:Post:Affiche }
+
+Post_details_ajout:
+    path:     /add
+    defaults: { _controller: MyAppUserBundle:Post:Ajout }
+lisAjax:
+    path:     /nopath
+    defaults: { _controller: MyAppUserBundle:Post:ajax }
+AddAjax:
+    path:     /path
+    defaults: { _controller: MyAppUserBundle:Post:ajout }
+Addcomment:
+    path:     /Add
+    defaults: { _controller: MyAppUserBundle:Commentaire:ajoutCom }
+showcomment:
+    path:     /show
+    defaults: { _controller: MyAppUserBundle:Commentaire:AfficheComment }
+returncomment:
+    path:     /Back
+    defaults: { _controller: MyAppUserBundle:Post:Affiche }
+editcomment:
+    path:     /modif
+    defaults: { _controller: MyAppUserBundle:Commentaire:update }
+removecomment:
+    path:     /delete
+    defaults: { _controller: MyAppUserBundle:Commentaire:supprimer }
+updatecomment:
+     path:     /uptodate
+     defaults: { _controller: MyAppUserBundle:Commentaire:update}
+     methods: POST
+editPost:
+     path:     /uppost
+     defaults: { _controller: MyAppUserBundle:Post:updatepost}
+    # methods: POST
+clientPost:
+     path:     /clientPost
+     defaults: { _controller: MyAppUserBundle:Post:clientPost}
+graphePie:
+     path:     /pie
+     defaults: { _controller: MyAppUserBundle:Graphe:chartHistogramme}
+deletPost:
+     path:     /deletPost
+     defaults: { _controller: MyAppUserBundle:Post:deletepost}
+
+my_app_user_trajet:
+    path:     /listTrajet
+    defaults: { _controller: MyAppUserBundle:Trajet:list }
+my_app_user_ajoutTrajet:
+    path:     /ajoutTrajet
+    defaults: { _controller: MyAppUserBundle:Trajet:ajout }
+my_app_user_supprimerTrajet:
+    path:     /supprimerTrajet/{id}
+    defaults: { _controller: MyAppUserBundle:Trajet:supprimer }
+
+my_app_user_rechercherTrajet:
+    path:     /rechercherTrajet/
+    defaults: { _controller: MyAppUserBundle:Trajet:rechercher }
+my_app_user_modifierTrajet:
+    path:     /modifierTrajet/{id}
+    defaults: { _controller: MyAppUserBundle:Trajet:modifier }
+
+my_app_user_mapTrajet:
+    path:     /map
+    defaults: { _controller: MyAppUserBundle:Trajet:map }
+
+my_app_user_listTrajetPassager:
+    path:     /listTrajetPassager
+    defaults: { _controller: MyAppUserBundle:Trajet:listTrajetPassager }
+
+my_app_user_listTrajetConducteur:
+    path:     /listTrajetConducteur
+    defaults: { _controller: MyAppUserBundle:Trajet:listTrajetConducteur }
+my_app_user_inscrireTrajet:
+    path:     /inscrireTrajet/{id}
+    defaults: { _controller: MyAppUserBundle:Trajet:inscrireTrajet }
+
+
+

@@ -1,0 +1,39 @@
+{% extends 'MyAppUserBundle:Default:index.html.twig' %}
+{% block nav %}
+    <div class="col-md-8 col-sm-8 col-xs-12">
+
+        <nav id="nav" class="main-navigation">
+
+            <ul class="navigation">
+                <li>
+                    <a href="{{ path('passenger_home') }}">Home</a>
+                </li>
+                
+                <li>
+                    <a href="{{ path('my_app_user_listTrajetPassager') }}">Rides</a>
+                </li>
+                <li>
+                    <a href="{{ path('Post_details_ajout') }}">New Posts</a>
+                </li>
+                <li>
+                    <a href="{{ path('Post_details_page') }}">See Posts</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="{{ path('actualite_index') }}">Blog</a>
+                </li>
+                <li>
+                    <a href="{{ path('feedback_newfeed') }}">Feedback</a>
+                </li>
+                <li>
+                    <a href="{{ path('fos_message_inbox') }}">Chat</a>
+                </li>
+            </ul>
+
+        </nav><!-- end .main-navigation -->
+
+    </div><!-- end .col-md-8 -->
+
+{% endblock %}

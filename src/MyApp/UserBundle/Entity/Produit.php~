@@ -1,0 +1,50 @@
+<?php
+
+namespace MyApp\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Produit
+ *
+ * @ORM\Table(name="produit", indexes={@ORM\Index(name="trajet_id", columns={"trajet_id"})})
+ * @ORM\Entity
+ */
+class Produit
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=20, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="poids", type="string", length=20, nullable=false)
+     */
+    private $poids;
+
+    /**
+     * @var \Trajet
+     *
+     * @ORM\ManyToOne(targetEntity="Trajet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="trajet_id", referencedColumnName="id")
+     * })
+     */
+    private $trajet;
+
+
+}
+

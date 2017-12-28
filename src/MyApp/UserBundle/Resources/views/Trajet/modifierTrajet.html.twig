@@ -1,0 +1,119 @@
+{% extends '::base.html.twig' %}
+
+{% block body_content %}
+    <section class="main-content">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 col-md-12 col-xs-12">
+
+                    <div class="page-sub-title textcenter">
+                        <h2>Add new ride</h2>
+                        <div class="line"></div>
+                    </div><!-- end .page-sub-title -->
+
+                </div><!-- end .col-lg-12 -->
+
+                <div class="col-sm-12 col-md-12 col-xs-12">
+
+                    <div class="page-content add-new-ride">
+
+                        <form action="" method="POST" novalidate autocomplete="off" class="idealforms add-ride">
+
+                            <div class="field">
+                                <select id="villeDepart" name="villeDepart">
+                                    <option value="default">From</option>
+                                    <option>Ariana</option>
+                                    <option>Béja</option>
+                                    <option>Ben Arous</option>
+                                    <option>Bizerte</option>
+                                    <option>Gabès</option>
+                                    <option>Gafsa</option>
+                                    <option>Jendoua</option>
+                                    <option>Kairouan</option>
+                                    <option>Kasserine</option>
+                                    <option>Kébili</option>
+                                    <option>Kef</option>
+                                    <option>Mahdia</option>
+                                    <option>Manouba</option>
+                                    <option>Médenine</option>
+                                    <option>Monastir</option>
+                                    <option>Nabeul</option>
+                                    <option>Sfax</option>
+                                    <option>Sidi Bouzid</option>
+                                    <option>Siliana</option>
+                                    <option>Sousse</option>
+                                    <option>Tataouine</option>
+                                    <option>Tozeur</option>
+                                    <option>Tunis</option>
+                                    <option>Zaghouan</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <select id="villeArrive" name="villeArrive">
+                                    <option value="default">To</option>
+                                    <option>Ariana</option>
+                                    <option>Béja</option>
+                                    <option>Ben Arous</option>
+                                    <option>Bizerte</option>
+                                    <option>Gabès</option>
+                                    <option>Gafsa</option>
+                                    <option>Jendoua</option>
+                                    <option>Kairouan</option>
+                                    <option>Kasserine</option>
+                                    <option>Kébili</option>
+                                    <option>Kef</option>
+                                    <option>Mahdia</option>
+                                    <option>Manouba</option>
+                                    <option>Médenine</option>
+                                    <option>Monastir</option>
+                                    <option>Nabeul</option>
+                                    <option>Sfax</option>
+                                    <option>Sidi Bouzid</option>
+                                    <option>Siliana</option>
+                                    <option>Sousse</option>
+                                    <option>Tataouine</option>
+                                    <option>Tozeur</option>
+                                    <option>Tunis</option>
+                                    <option>Zaghouan</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <input name="DateTrajet" type="datetime" placeholder="Date" class="datepicker">
+                            </div>
+
+                            <div class="field">
+                                <select id="nombrePlace" name="nombrePlace">
+                                    <option value="default">Nombre de sieges</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <input type="number" id="prix" name="prix"/>
+                                </select>
+                            </div>
+
+                            <div class="field buttons">
+                                <button type="submit" class="btn btn-lg green-color">Modifier</button>
+                            </div>
+
+                        </form>
+
+                    </div><!-- end .page-content -->
+
+                </div><!-- end .col-sm-12 -->
+
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+
+    </section><!-- end .main-content -->
+
+{% endblock body_content %}
+

@@ -1,0 +1,8 @@
+{% extends "@MyAppUser/Conducteur/conduc_home.html.twig" %}
+{% block body_content %}
+    <form method="POST">
+        <input type="hidden" value="{{ comment.id }}" name="con">
+<input type="text" value="{{ comment.content }} " name="contenu" >
+        <input type="submit" value="Update" href="{{ path('updatecomment') }}" >
+    </form>
+{% endblock %}

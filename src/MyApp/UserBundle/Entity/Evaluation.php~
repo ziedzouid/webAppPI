@@ -1,0 +1,67 @@
+<?php
+
+namespace MyApp\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Evaluation
+ *
+ * @ORM\Table(name="evaluation", indexes={@ORM\Index(name="trajet_id", columns={"trajet_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class Evaluation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="smallint", nullable=false)
+     */
+    private $note;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_evaluation", type="datetime", nullable=false)
+     */
+    private $dateEvaluation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="text", nullable=false)
+     */
+    private $commentaire;
+
+    /**
+     * @var \Trajet
+     *
+     * @ORM\ManyToOne(targetEntity="Trajet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="trajet_id", referencedColumnName="id")
+     * })
+     */
+    private $trajet;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+
