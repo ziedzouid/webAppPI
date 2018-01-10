@@ -20,6 +20,7 @@ class DashboardClientController extends Controller
 
     public function editProfileAction(Request $request)
     {
+        $circle = $this->getDoctrine()->getManager()->getRepository('MyAppUserBundle:Circle')->find(1);
         $user =$this->getUser();
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('MyAppUserBundle:User')->find($user->getId());
@@ -34,9 +35,7 @@ class DashboardClientController extends Controller
             $user->setUsername($request->get('userrname'));
             $date = new DateTime($request->get('datenais'));
             $user->setDateNaissance($date);
-
-
-
+            $user->setCircle($circle);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
