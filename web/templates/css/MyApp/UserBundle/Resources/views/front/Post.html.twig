@@ -1,0 +1,109 @@
+{% extends "base.html.twig" %}
+{% block body_content %}
+<section class="main-content">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+
+                <div class="page-sub-title textcenter">
+                    <h2>Add Post</h2>
+
+                    <div class="line"></div>
+                </div><!-- end .page-sub-title -->
+
+            </div><!-- end .col-lg-12 -->
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+
+                <div class="page-content add-new-ride">
+
+                    <form action="" novalidate autocomplete="off" class="idealforms add-ride" method="POST">
+
+                        <div class="field">
+                            <select id="destination" name="depart">
+                                <option value="default">From</option>
+                                <option>Tunis</option>
+                                <option>Manouba</option>
+                                <option>Ariena</option>
+                                <option>Ben Arouss</option>
+                                <option>Beja</option>
+                                <option>Kef</option>
+                                <option>Jendouba</option>
+                                <option>Siliana</option>
+                                <option>Zagouane</option>
+                                <option>kairouan</option>
+                                <option>Gasserine</option>
+                                <option>Sousse</option>
+                                <option>Monastir</option>
+                                <option>Mahdia</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Medanin</option>
+                                <option>Touzeur</option>
+                                <option>Tataouin</option>
+                                <option>Bizerte</option>
+                                <option>Gafssa</option>
+                                <option>Gebes</option>
+                                <option>Gbeli</option>
+                                <option>SidiBouzid</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <select id="destinationd" name="destination">
+                                <option value="default">To</option>
+                                <option value="default">From</option>
+                                <option>Tunis</option>
+                                <option>Manouba</option>
+                                <option>Ariena</option>
+                                <option>Ben Arouss</option>
+                                <option>Beja</option>
+                                <option>Kef</option>
+                                <option>Jendouba</option>
+                                <option>Siliana</option>
+                                <option>Zagouane</option>
+                                <option>kairouan</option>
+                                <option>Gasserine</option>
+                                <option>Sousse</option>
+                                <option>Monastir</option>
+                                <option>Mahdia</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Medanin</option>
+                                <option>Touzeur</option>
+                                <option>Tataouin</option>
+                                <option>Bizerte</option>
+                                <option>Gafssa</option>
+                                <option>Gebes</option>
+                                <option>Gbeli</option>
+                                <option>SidiBouzid</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <input name="event" type="text" placeholder="Date" class="datepicker">
+                        </div>
+
+                        <div class="field">
+                          <textarea name="content" placeholder="add comment or meeting point"></textarea>
+                        </div>
+
+                        <div class="field buttons">
+                            <button type="submit" class="btn btn-lg green-color">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div><!-- end .page-content -->
+
+            </div><!-- end .col-sm-12 -->
+
+        </div><!-- end .row -->
+    </div><!-- end .container -->
+
+</section><!-- end .main-content -->
+
+
+    {% endblock %}

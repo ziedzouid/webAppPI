@@ -50,6 +50,31 @@ delete_user:
     path:     /deleteuser/{id}
     defaults: { _controller: MyAppUserBundle:DashBoardAdmin:deleteUser }
     methods:  [GET, POST]
+AffichageEvaluation:
+    path:     /AffichageEvaluation
+    defaults: { _controller: MyAppUserBundle:Evaluation:index }
+Ajout_evaluation:
+    path:     /AjoutEvaluation
+    defaults: { _controller: MyAppUserBundle:Evaluation:Ajout }
+Ajout2_evaluation:
+    path:     /Ajout2Evaluation
+    defaults: { _controller: MyAppUserBundle:Evaluation:Ajout2 }
+Affichage2Evaluation_DQL:
+    path:     /DQL/AffichageEvaluation/{trajet_id}/{user_id}
+    defaults: { _controller: MyAppUserBundle:Evaluation:findID }
+ModificationEvaluation:
+    path:     /ModifierEvaluation
+    defaults: { _controller: MyAppUserBundle:Evaluation:UpdateEvaluation }
+SupprimerEvaluation:
+    path:     /SupprimerEvluation
+    defaults: { _controller: MyAppUserBundle:Evaluation:SupprimerEvaluation }
+ListeAdminEvaluation:
+    path:     /ListeAdminEvaluation
+    defaults: { _controller: MyAppUserBundle:Evaluation:ListeAdminEvaluation }
+Supprimer2Evaluation:
+    path:     /Supprimer2Evluation/{id}
+    defaults: { _controller: MyAppUserBundle:Evaluation:SupprimerEvaluation2 }
+
 Post_details_page:
     path:     /Post
     defaults: { _controller: MyAppUserBundle:Post:Affiche }
@@ -155,14 +180,3 @@ ListeAdminEvent:
 Supprimer2Event:
     path:     /Supprimer2Event/{id}
     defaults: { _controller: MyAppUserBundle:CrudEvents:SupprimerEvent }
-
-GetAllOfMyEvents:
-    path:     /GetAllEvents
-    defaults: { _controller: MyAppUserBundle:CrudEvents:GetAllEvents }
-GetMyEvents:
-    path:     /myEvents
-    defaults: { _controller: MyAppUserBundle:CrudEvents:GetMyEvents }
-
-
-
-

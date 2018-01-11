@@ -1,0 +1,44 @@
+actualite_index:
+    path:     /
+    defaults: { _controller: "MyAppUserBundle:Actualite:indexactualite" }
+    methods:  GET
+
+actualite_show:
+    path:     /{id}/show
+    defaults: { _controller: "MyAppUserBundle:Actualite:show" }
+    methods:  GET
+
+actualite_new:
+    path:     /new
+    defaults: { _controller: "MyAppUserBundle:Actualite:new" }
+    methods:  [GET, POST]
+
+actualite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MyAppUserBundle:Actualite:edit" }
+    methods:  [GET, POST]
+
+actualite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MyAppUserBundle:Actualite:delete" }
+    methods:  DELETE
+
+my_actuality:
+    path:     /myactuality
+    defaults: { _controller: MyAppUserBundle:Actualite:showmyactualite }
+    methods:  [GET, POST]
+
+delete_my_actuality:
+    path:     /deletemyactuality/{id}
+    defaults: { _controller: MyAppUserBundle:Actualite:deleteActuality }
+    methods:  [GET, POST]
+
+modify_my_actuality:
+    path:     /modifymyactuality/{id}
+    defaults: { _controller: MyAppUserBundle:Actualite:modifyActuality }
+    methods:  [GET, POST]
+
+bann_user:
+    path:     /bannuser/{id}
+    defaults: { _controller: MyAppUserBundle:Actualite:bannUser }
+    methods:  [GET, POST]

@@ -1,0 +1,469 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+
+
+
+
+
+
+
+        <script src="{{ asset('templates/js/Evaluation.js') }}"></script>
+    <script>$(document).ready(function() {
+    $('.bar span').hide();
+
+    $('#bar-four').animate({
+    width: '{{ conduc }}%'}, 1000);
+    $('#bar-three').animate({
+    width: '{{ confort }}%'}, 1000);
+    $('#bar-two').animate({
+    width: '{{ proprete }}%'}, 1000);
+    $('#bar-one').animate({
+    width: '{{ rapport }}%'}, 1000);
+
+    setTimeout(function() {
+    $('.bar span').fadeIn('slow');
+    }, 1000);
+
+    });</script>
+
+{% endblock %}
+{% block body_content %}
+    {% block head %}
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset ('templates/css/StarRating.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/Star.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/FormulaireEvaluation.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/StarRatingTousLesTypes.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/Emoji.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/PricingTableTry.css') }}">
+
+
+        {% endblock %}
+
+    {% endblock %}
+    <style>
+        #customers {
+            text-align: center;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+        }
+
+        #customers td, #customers th {
+
+            vertical-align: middle;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <div align="center"><h1>Evaluation list</h1>
+
+
+
+        <div class="container1" style="width:800px; margin:0 auto;">
+            <div class="inner" style="width:800px; margin:0 auto;">
+                <div class="rating1" style="float: left;
+    width: 45%;
+    margin-right: 5%;
+    text-align: center;">
+                    <span class="rating-num">   {{ notea }}</span>
+                    <div class="rating-stars">
+                        <span><i class="{{ tab[0] }}"></i></span>
+                        <span><i class="{{ tab[1] }}"></i></span>
+                        <span><i class="{{ tab[2] }}"></i></span>
+                        <span><i class="{{ tab[3] }}"></i></span>
+                        <span><i class="{{ tab[4] }}"></i></span>
+                    </div>
+                    <div class="rating-users">
+                        <i class="icon-user"></i>{{ nbvote }}  total
+                    </div>
+                </div>
+
+                <div class="histo" >
+
+
+                    <div class="four histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i>            </span>
+                        <span class="bar-block">
+          <span id="bar-four" class="bar">
+            <span>Conducteur</span>&nbsp;
+          </span>
+        </span>
+                    </div>
+
+                    <div class="three histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i>            </span>
+                        <span class="bar-block">
+          <span id="bar-three" class="bar">
+            <span>Confort</span>&nbsp;
+          </span>
+        </span>
+                    </div>
+
+                    <div class="two histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i>            </span>
+                        <span class="bar-block">
+          <span id="bar-two" class="bar">
+            <span>Propreté</span>&nbsp;
+          </span>
+        </span>
+                    </div>
+
+                    <div class="one histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i>            </span>
+                        <span class="bar-block">
+          <span id="bar-one" class="bar">
+            <span>RapportQualite/Prix</span>&nbsp;
+          </span>
+        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if ev==0  %}
+            <div>
+                <div class="container">
+                    <h2> Ajouter Une Evaluation ! </h2>
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Evaluer !</button>
+
+                    <!-- Modal -->
+                    <form method="post" action="{{ path('Ajout2_evaluation') }}">
+                        <input type="text" hidden name="utilisateur_id_courant" value="{{utilisateur_id_courant}}">
+                        <input type="text" hidden name="trajet_id" value="{{ trajet_id }}">
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="container1">
+                                    <form id="login" action="none">
+                                        <h1 id="ff-proof" class="ribbon" align="center">Dev. center &nbsp;&nbsp;</h1>
+                                        <div class="apple">
+                                            <div class="top"><span></span></div>
+                                            <div class="butt"><span></span></div>
+                                            <div class="bite"></div>
+                                        </div>
+                                        <fieldset id="inputs">
+                                            <textarea placeholder="Describe yourself here..." name="commentaire" > Commentaire ... </textarea>
+                                            <fieldset>
+                                                <span class="label label-default">Default Label</span>
+                                                <label style="text-align: left">Note totale :</label>
+                                                <div class="rate" style="text-align: center;
+    vertical-align: middle;
+    line-height: 90px">
+                                                    <div class="emoji">😑</div>
+                                                    <input type="range" min="1" max="5" step="1" class="slider" name="note">
+                                                </div>
+                                            </fieldset>
+
+                                            <!-- RATE -->
+
+                                            <fieldset>
+                                                <label style="text-align: left">Proprete :</label>
+                                                <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                    <input type="radio" id="field1_star5" name="proprete" value="5" /><label class = "full" for="field1_star5"></label>
+
+                                                    <input type="radio" id="field1_star4" name="proprete" value="4" /><label class = "full" for="field1_star4"></label>
+
+                                                    <input type="radio" id="field1_star3" name="proprete" value="3" /><label class = "full" for="field1_star3"></label>
+
+                                                    <input type="radio" id="field1_star2" name="proprete" value="2" /><label class = "full" for="field1_star2"></label>
+
+                                                    <input type="radio" id="field1_star1" name="proprete" value="1" /><label class = "full" for="field1_star1"></label>
+
+                                                </fieldset>
+                                            </fieldset>
+
+                                            <fieldset>
+                                                <label style="text-align: left">Confort :</label>
+                                                <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                    <input type="radio" id="field2_star5" name="confort" value="5" /><label class = "full" for="field2_star5"></label>
+
+                                                    <input type="radio" id="field2_star4" name="confort" value="4" /><label class = "full" for="field2_star4"></label>
+
+                                                    <input type="radio" id="field2_star3" name="confort" value="3" /><label class = "full" for="field2_star3"></label>
+
+                                                    <input type="radio" id="field2_star2" name="confort" value="2" /><label class = "full" for="field2_star2"></label>
+
+                                                    <input type="radio" id="field2_star1" name="confort" value="1" /><label class = "full" for="field2_star1"></label>
+
+                                                </fieldset>
+                                            </fieldset>
+                                            <fieldset>
+                                                <label style="text-align: left">Conducteur :</label>
+                                                <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                    <input type="radio" id="field3_star5" name="conducteur" value="5" /><label class = "full" for="field3_star5"></label>
+
+                                                    <input type="radio" id="field3_star4" name="conducteur" value="4" /><label class = "full" for="field3_star4"></label>
+
+                                                    <input type="radio" id="field3_star3" name="conducteur" value="3" /><label class = "full" for="field3_star3"></label>
+
+                                                    <input type="radio" id="field3_star2" name="conducteur" value="2" /><label class = "full" for="field3_star2"></label>
+
+                                                    <input type="radio" id="field3_star1" name="conducteur" value="1" /><label class = "full" for="field3_star1"></label>
+
+                                                </fieldset>
+                                            </fieldset>
+                                            <fieldset>
+                                                <label style="text-align: left">Rapport Qualité/Prix:</label>
+                                                <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                    <input type="radio" id="field4_star5" name="rapport" value="5" /><label class = "full" for="field4_star5"></label>
+
+                                                    <input type="radio" id="field4_star4" name="rapport" value="4" /><label class = "full" for="field4_star4"></label>
+
+                                                    <input type="radio" id="field4_star3" name="rapport" value="3" /><label class = "full" for="field4_star3"></label>
+
+                                                    <input type="radio" id="field4_star2" name="rapport" value="2" /><label class = "full" for="field4_star2"></label>
+
+                                                    <input type="radio" id="field4_star1" name="rapport" value="1" /><label class = "full" for="field4_star1"></label>
+
+                                                </fieldset>
+                                            </fieldset>
+
+
+
+
+
+                                            <!-- works with multiple ratings as well -->
+
+
+
+
+                                            <fieldset id="actions">
+                                                <input type="submit" id="submit" value="Evaluer !" style="    width: 48%;  height: 48% ;background-color: #3070a0;"/>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" style=" width: 48%;height: 50px;background-color: #e02f2b; ">Close</button>
+                                            </fieldset>
+                                        </fieldset>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        {% endif %}
+
+
+        <table border="1px" id="customers" style="border-collapse:separate;
+	border-spacing:  5px 0px ;"  align="center">
+
+
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Ville De depart </th>
+                <th>Ville D'arrivé  </th>
+                <th>Note</th>
+                <th>Commentaire</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for evaluation in evaluations %}
+
+                <tr>
+                    <td><label for=""> {{ evaluation.user.id }} {{ evaluation.user.nom }} {{ evaluation.user.prenom }} </label> {% if evaluation.user.id == utilisateur_id_courant %}
+                            <fieldset>
+                            <div class="container">
+                                <h2> Modifier l'Evaluation ! </h2>
+                                <!-- Trigger the modal with a button -->
+
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="margin-bottom: 10px;">Modifier !</button>
+                                <button type="button" class="btn btn-info btn-lg" style="background-color: red ;margin-bottom: 10px;" id="BoutSuppEvaluation" onclick="ShowDivEvaSupp()"> Supprimer</button>
+                                <br>
+
+                                <div id="DivEvaSupp" hidden>
+                                    <fieldset>
+                                        <form method="post" action="{{ path('SupprimerEvaluation') }}">
+                                            <input type="text" hidden name="utilisateur_id_courant" value="{{ utilisateur_id_courant }}">
+                                            <input type="text" hidden name="trajet_id" value="{{ trajet_id }}">
+                                            <input type="text" hidden name="evaluation_id" value="{{ evaluation.id }}">
+                                            <button type="submit" class="btn btn-info btn-lg" style="background-color: grey ;color: #0f0f0f ;margin-bottom: 10px;" > Sur ?</button>
+                                            <button type="button" class="btn btn-info btn-lg" onclick="AnnulersuppEvaluation() " style="margin-bottom: 10px;"> Annnuler </button>
+                                        </form>
+                                    </fieldset>
+                                </div>
+
+                                <!-- Modal -->
+                                <form method="post" action="{{ path('ModificationEvaluation') }}">
+                                    <input type="text" hidden name="utilisateur_id_courant" value="{{ utilisateur_id_courant }}">
+                                    <input type="text" hidden name="trajet_id" value="{{ trajet_id }}">
+                                    <input type="text" hidden name="evaluation_id" value="{{ evaluation.id }}">
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="container1">
+                                                <form id="login" action="none">
+                                                    <h1 id="ff-proof" class="ribbon" align="center">Dev. center &nbsp;&nbsp;</h1>
+                                                    <div class="apple">
+                                                        <div class="top"><span></span></div>
+                                                        <div class="butt"><span></span></div>
+                                                        <div class="bite"></div>
+                                                    </div>
+                                                    <fieldset id="inputs">
+                                                        <textarea placeholder="Describe yourself here..." name="commentaire" > {{ evaluation.commentaire }} </textarea>
+                                                        <fieldset>
+                                                            <span class="label label-default" >Note Globale </span>
+
+                                                            <div class="rate" style="text-align: center;
+vertical-align: middle;
+line-height: 90px ;    margin-left: 75px;">
+                                                                <div class="emoji">😑</div>
+                                                                <input type="range" min="1" max="5" step="1" class="slider" name="note" value="{{ evaluation.note }}">
+                                                            </div>
+                                                        </fieldset>
+
+                                                        <!-- RATE -->
+
+                                                        <fieldset>
+                                                            <label style="text-align: left">Proprete :</label>
+                                                            <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                                <input type="radio" id="field1_star5" name="proprete" value="5" /><label class = "full" for="field1_star5" ></label>
+
+                                                                <input type="radio" id="field1_star4" name="proprete" value="4" /><label class = "full" for="field1_star4"></label>
+
+                                                                <input type="radio" id="field1_star3" name="proprete" value="3" /><label class = "full" for="field1_star3"></label>
+
+                                                                <input type="radio" id="field1_star2" name="proprete" value="2" /><label class = "full" for="field1_star2"></label>
+
+                                                                <input type="radio" id="field1_star1" name="proprete" value="1" /><label class = "full" for="field1_star1"></label>
+
+                                                            </fieldset>
+                                                        </fieldset>
+
+                                                        <fieldset>
+                                                            <label style="text-align: left">Confort :</label>
+                                                            <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                                <input type="radio" id="field2_star5" name="confort" value="5" /><label class = "full" for="field2_star5"></label>
+
+                                                                <input type="radio" id="field2_star4" name="confort" value="4" /><label class = "full" for="field2_star4"></label>
+
+                                                                <input type="radio" id="field2_star3" name="confort" value="3" /><label class = "full" for="field2_star3"></label>
+
+                                                                <input type="radio" id="field2_star2" name="confort" value="2" /><label class = "full" for="field2_star2"></label>
+
+                                                                <input type="radio" id="field2_star1" name="confort" value="1" /><label class = "full" for="field2_star1"></label>
+
+                                                            </fieldset>
+                                                        </fieldset>
+                                                        <fieldset>
+                                                            <label style="text-align: left">Conducteur :</label>
+                                                            <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                                <input type="radio" id="field3_star5" name="conducteur" value="5" /><label class = "full" for="field3_star5"></label>
+
+                                                                <input type="radio" id="field3_star4" name="conducteur" value="4" /><label class = "full" for="field3_star4"></label>
+
+                                                                <input type="radio" id="field3_star3" name="conducteur" value="3" /><label class = "full" for="field3_star3"></label>
+
+                                                                <input type="radio" id="field3_star2" name="conducteur" value="2" /><label class = "full" for="field3_star2"></label>
+
+                                                                <input type="radio" id="field3_star1" name="conducteur" value="1" /><label class = "full" for="field3_star1"></label>
+
+                                                            </fieldset>
+                                                        </fieldset>
+                                                        <fieldset>
+                                                            <label style="text-align: left">Rapport Qualité/Prix:</label>
+                                                            <fieldset class="rating" style="    float: right; margin: 0px 0px 20px 10px;">
+                                                                <input type="radio" id="field4_star5" name="rapport" value="5" /><label class = "full" for="field4_star5"></label>
+
+                                                                <input type="radio" id="field4_star4" name="rapport" value="4" /><label class = "full" for="field4_star4"></label>
+
+                                                                <input type="radio" id="field4_star3" name="rapport" value="3" /><label class = "full" for="field4_star3"></label>
+
+                                                                <input type="radio" id="field4_star2" name="rapport" value="2" /><label class = "full" for="field4_star2"></label>
+
+                                                                <input type="radio" id="field4_star1" name="rapport" value="1" /><label class = "full" for="field4_star1"></label>
+
+                                                            </fieldset>
+                                                        </fieldset>
+
+
+
+
+
+                                                        <!-- works with multiple ratings as well -->
+
+
+
+
+                                                        <fieldset id="actions">
+                                                            <input type="submit" id="submit" value="Modifier !" style="    width: 48% ;height: 48%; background-color: #3070a0;"/>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal" style=" width: 48%;height: 50px;background-color: #e02f2b; ">Close</button>                                                    </fieldset>
+                                                    </fieldset>
+
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            </fieldset>{% endif %} </td>
+                    <td>{{ evaluation.trajet.villeDepart }} </td>
+                    <td>{{ evaluation.trajet.villeArrive }} </td>
+                    <td>
+                        <div class="wrap" disabled>
+                            <ul class="stars" disabled>
+                                <li title="5" {% if  evaluation.note  == 5 %}  class="current" {% endif %} ></li>
+                                <li title="4" {% if  evaluation.note  == 4 %}  class="current" {% endif %} ></li>
+                                <li title="3" {% if  evaluation.note  == 3 %}  class="current" {% endif %} ></li> <!--pre selected -->
+                                <li title="2" {% if  evaluation.note  == 2 %}  class="current" {% endif %} ></li>
+                                <li title="1" {% if  evaluation.note  == 1 %}  class="current" {% endif %} ></li>
+                            </ul>
+
+                        </div>
+
+
+                    </td>
+
+                    <td>{{ evaluation.commentaire }} </td>
+
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block body_content %}
+    <div class="clearfix"></div>
+
+    <div id="respond">
+
+        <div class="clearfix"></div>
+           <h1></h1>
+        <h3 id="reply-title">Leave a Reply</h3>
+
+        <form id="comment-form" action="" novalidate autocomplete="off" class="idealforms addcomment" method="POST">
+
+
+
+            <div class="field">
+                <input name="email" type="email" placeholder="Email address">
+                <span class="error"></span>
+            </div>
+
+
+
+            <div class="field">
+                <textarea name="message" id="message" cols="5" placeholder="Message" rows="4"></textarea>
+            </div>
+
+            <div class="field buttons">
+                <button type="submit" class="btn btn-lg blue-color">Submit</button>
+            </div>
+
+            <div class="">
+                <a href="{{ path('returncomment') }}" class='comment-reply-link btn blue-color' id="ad">Go Back</a>
+
+            </div>
+
+            <span id="invalid"></span>
+
+        </form>
+
+    </div><!-- #respond -->
+
+    <!-- End Comments -->
+
+    </div> <!-- end .comments-area -->
+
+    </div><!-- end .page-content -->
+{% endblock %}

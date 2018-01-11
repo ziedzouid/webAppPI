@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+ <script src="{{ asset('templates/js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ asset('templates/js/owl.carousel.min.js') }}"></script>
+
+    <script src="{{ asset('templates/js/jquery.sticky.js') }}"></script>
+
+    <script src="{{ asset('templates/js/jquery.slicknav.min.js') }}"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqCaX4fFEQRiTJoeclXKZRaFh2fYfps_Y"></script>
+    <script src="{{ asset('templates/js/jquery.nice-select.js') }}"></script>
+
+    <script src="js/jquery.nice-select.js"></script>
+
+    <script src="{{ asset('templates/js/jquery.jCounter-0.1.4.js') }}"></script>
+
+    <script src="{{ asset('templates/js/main.js') }}"></script>
+    <!-- <script src="js/minified/minified.js"></script> -->
+    <script src="js/map-init.js"></script>
+
+
+{% endblock %}
+{% block body_content %}
+    {% block head %}
+
+        {% block stylesheet %}
+            {{ parent() }}
+            <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset ('templates/css/font-awesome.min.css') }}">
+
+            <link rel="stylesheet" href="{{ asset ('templates/css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/et-line.css') }}">
+            <!-- <link rel="stylesheet" href="css/animate.css"> -->
+            <link rel="stylesheet" href="{{ asset ('templates/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/flaticon.css') }}">
+
+        {% endblock %}
+        {% endblock %}
+
+    {% for Evenement in Evenement %}
+    <div class="single-list-course row no-gutter">
+    <div class="single-list-course row no-gutter container" style="margin: auto;">
+        <div class="col-xs-12 col-sm-4">
+            <img src="{{ asset('templates/img/events/1.jpg') }}" alt="">
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            <div class="list-course-content">
+                <h3>{{ Evenement.type  }}</h3>
+                <p>{{ Evenement.contenu }}</p>
+
+            </div>
+            <div class="single-bottom icon">
+                <i class="fa fa-star" style="color: gold"></i>
+                <i class="fa fa-star"style="color: gold"></i>
+                <i class="fa fa-star"style="color: gold"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+        </div>
+
+        <div class="course-bottom-list flex space-between form-group">
+
+            <div class="single-bottom dollar">
+
+
+
+            </div>
+            <div class="single-bottom dollar">
+
+            </div>
+            <div class="row">
+
+            </div>
+        </div>
+
+            {% endfor %}
+
+
+    </div>
+    </div>
+
+{% endblock %}

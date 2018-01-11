@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body_content %}
+    <h1>Feedbacks list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for feedback in feedbacks %}
+            <tr>
+                <td><a href="{{ path('feedback_show', { 'id': feedback.id }) }}">{{ feedback.id }}</a></td>
+                <td>{{ feedback.titre }}</td>
+                <td>{{ feedback.contenu }}</td>
+                <td>{% if feedback.date %}{{ feedback.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('feedback_show', { 'id': feedback.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('feedback_edit', { 'id': feedback.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('feedback_new') }}">Create a new feedback</a>
+        </li>
+    </ul>
+{% endblock %}

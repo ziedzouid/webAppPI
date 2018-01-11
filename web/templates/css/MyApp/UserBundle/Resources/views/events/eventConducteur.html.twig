@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block body_content %}
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <div class="page-sub-title textcenter">
+            <h2>Evenements</h2>
+            <div class="line"></div>
+        </div><!-- end .page-sub-title -->
+
+    </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+
+    <div class="search-content">
+
+        <form action="" novalidate autocomplete="off" class="idealforms searchtours">
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="field">
+                        <input type="text" placeholder="Type" id="ty">
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-12">
+
+                    <div class="full-fild">
+                        <textarea name="message" id="message" cols="5" placeholder="Message" rows="4"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-12">
+
+                    <div class="field buttons">
+                        <button type="submit" class="btn btn-lg green-color">ADD EVENT</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="articles">
+
+                <article class="article clearfix">
+
+                    <figure class="ride-image">
+                        <img src="{{ asset('templates/img/events/1.jpg') }}" class="w3-round-small" alt="Norway"
+                             style="width:30%"/>
+                    </figure>
+
+                    <ul class="article-meta">
+
+                        <li class="article-comment">
+                            <a href="#" class="tooltip-link" data-original-title="Comments" data-toggle="tooltip">
+                                <i class="fa fa-comments"></i>
+                            </a>
+                        </li><!-- end .article-comment -->
+                    </ul>
+                    <div class="search-widget sidebar-widget">
+
+                        <h4 class="widget-title">Search</h4>
+
+                        <div class="widget-content">
+                            <form class="idealforms search-form adaptive" autocomplete="off" novalidate="" action="">
+                                <div class="field idealforms-field idealforms-field-email">
+                                    <input type="text" placeholder="Text" name="search">
+                                </div>
+                                <div class="field buttons">
+                                    <button class="btn btn-lg blue-color" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div><!-- end .widget-content -->
+
+                    </div><!-- end .archives-widget -->
+                </article>
+            </div>
+        </form>
+    </div><!-- end .search-content -->
+
+
+{% endblock %}

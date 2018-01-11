@@ -1,0 +1,46 @@
+{% block ajout_act_content  %}
+
+    <div class="modal fade" id="newfeed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form  action="{{ path("actualite_newAct") }}" method="POST" novalidate autocomplete="off" class="idealforms reg">
+
+                    <div class="log-header">
+                        <span class="log-in">ADD FEED</span>
+                    </div>
+
+                    <div>
+                        <input name="rubrique" type="text" placeholder="Rubrique">
+
+                    </div>
+
+                    <div>
+                        <textarea name="contenu" cols="40" rows="5" placeholder="Wrirte...."></textarea>
+
+                    </div>
+
+
+                    <input type="file" name="img">
+
+
+                    <div class="field buttons">
+                        <button type="submit" value="submit" class="submit btn green-color">ADD</button>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </form><!-- end .reg -->
+
+
+            </div><!-- end .modal-body -->
+
+        </div><!-- end .modal-content -->
+    </div><!-- end .modal-dialog -->
+</div><!-- end .modal -->
+{% endblock %}

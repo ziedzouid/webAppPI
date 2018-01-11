@@ -1,0 +1,36 @@
+{% extends '@MyAppUser/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <table class="table table-striped table-bordered" id="t01">
+
+        <caption align="center">
+            <center><h1>USERS</h1></center>
+        </caption>
+
+        <thead>
+        <tr>
+
+            <th >Type</th>
+            <th >contenu</th>
+
+        </tr>
+        </thead>
+        {% for Evenement in evenements %}
+            <tbody>
+
+
+            <tr>
+                <td>{{ Evenement.type }}</td>
+                <td>{{ Evenement.contenu }}</td>
+                <td align="center"><a href="{{ path('Supprimer2Event',{'id':Evenement.id}) }}"
+                                      onclick="return confirm('Voulez vous vraiment supprimer cet élément?')">
+                        <img src="{{ asset ('templates/img/delete.png') }}" width="20px"
+                             height="20px"></a>
+                   </td>
+            </tr>
+
+
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

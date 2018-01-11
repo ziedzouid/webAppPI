@@ -1,0 +1,43 @@
+{% extends '@MyAppUser/layoutAdmin.html.twig' %}
+{% block body %}
+
+
+    <table class="table table-striped table-bordered" id="t01">
+
+        <caption align="center">
+            <center><h1>USERS</h1></center>
+        </caption>
+
+        <thead>
+        <tr>
+
+            <th >First Name</th>
+            <th >Last Name</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>last login Date</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        {% for us in user %}
+        <tbody>
+
+
+        <tr>
+            <td >{{ us.prenom }}</td>
+            <td>{{ us.nom }}</td>
+            <td>{{ us.email }}</td>
+            <td>{{ us.telephone }}</td>
+            <td>{{ us.lastLogin|date('Y-m-d') }}</td>
+            <td align="center"><a href="{{ path('delete_user',{'id':us.id}) }}"
+                   onclick="return confirm('Voulez vous vraiment supprimer cet élément?')">
+                    <img src="{{ asset ('templates/img/delete.png') }}" width="20px"
+                         height="20px"></a></td>
+        </tr>
+
+
+        </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock %}
