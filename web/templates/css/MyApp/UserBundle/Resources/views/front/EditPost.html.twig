@@ -1,0 +1,217 @@
+<head>
+
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>My ride</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+
+    <!-- Bootstrap -->
+    <link href="{{ asset ('templates/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Forms -->
+    <link href="{{ asset ('templates/css/jquery.idealforms.css') }}" rel="stylesheet">
+    <!-- Select  -->
+    <link href="{{ asset ('templates/css/jquery.idealselect.css') }}" rel="stylesheet">
+    <!-- Slicknav  -->
+    <link href="{{ asset ('templates/css/slicknav.css') }}" rel="stylesheet">
+    <!-- Main style -->
+    <link href="{{ asset ('templates/css/style.css') }}" rel="stylesheet">
+
+
+    <!-- Modernizr -->
+    <script src="{{ asset ('templates/js/modernizr.js') }}"></script>
+
+    <!-- Fonts -->
+    <link href="{{ asset ('templates/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300'  type='text/css' >
+    <link href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' type='text/css'>
+
+    <link href="{{ asset ('templates/css/feed.css') }}" rel="stylesheet">
+    {% block stylesheet %}
+    {% endblock %}
+</head>
+<section class="main-content">
+
+    <div class="second-parallax-content">
+
+        <section class="container">
+
+            <div class="row">
+
+                <div class="main-header-container clearfix">
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+
+                        <div class="logo">
+                            <h1>CoolVoiturage</h1>
+                        </div><!-- end .logo -->
+
+                    </div><!-- end .col-sm-4 -->
+
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+
+                        <nav id="nav" class="main-navigation">
+
+
+
+                        </nav><!-- end .main-navigation -->
+
+                    </div><!-- end .col-md-8 -->
+
+                </div><!-- end .main-header-container -->
+
+            </div><!-- end .row -->
+
+        </section><!-- end .container -->
+
+    </div><!-- end .second-parallax-content -->
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+
+                <div class="page-sub-title textcenter">
+                    <h2>Edit Post</h2>
+
+                    <div class="line"></div>
+                </div><!-- end .page-sub-title -->
+
+            </div><!-- end .col-lg-12 -->
+
+            <div class="col-sm-12 col-md-12 col-xs-12">
+
+                <div class="page-content add-new-ride">
+
+                    <form action="" novalidate autocomplete="off" class="idealforms add-ride" method="POST">
+                        <div class="field">
+                            <select id="destination" name="depart">
+                                <option value="default">{{ post.depart }}</option>
+                                <option>Tunis</option>
+                                <option>Manouba</option>
+                                <option>Ariena</option>
+                                <option>Ben Arouss</option>
+                                <option>Beja</option>
+                                <option>Kef</option>
+                                <option>Jendouba</option>
+                                <option>Siliana</option>
+                                <option>Zagouane</option>
+                                <option>kairouan</option>
+                                <option>Gasserine</option>
+                                <option>Sousse</option>
+                                <option>Monastir</option>
+                                <option>Mahdia</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Medanin</option>
+                                <option>Touzeur</option>
+                                <option>Tataouin</option>
+                                <option>Bizerte</option>
+                                <option>Gafssa</option>
+                                <option>Gebes</option>
+                                <option>Gbeli</option>
+                                <option>SidiBouzid</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <select id="destinationd" name="destination">
+                                <option value="default">{{ post.arrive }}</option>
+                                <option value="default">From</option>
+                                <option>Tunis</option>
+                                <option>Manouba</option>
+                                <option>Ariena</option>
+                                <option>Ben Arouss</option>
+                                <option>Beja</option>
+                                <option>Kef</option>
+                                <option>Jendouba</option>
+                                <option>Siliana</option>
+                                <option>Zagouane</option>
+                                <option>kairouan</option>
+                                <option>Gasserine</option>
+                                <option>Sousse</option>
+                                <option>Monastir</option>
+                                <option>Mahdia</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Medanin</option>
+                                <option>Touzeur</option>
+                                <option>Tataouin</option>
+                                <option>Bizerte</option>
+                                <option>Gafssa</option>
+                                <option>Gebes</option>
+                                <option>Gbeli</option>
+                                <option>SidiBouzid</option>
+                            </select>
+                        </div>
+
+
+                        <div class="field">
+                            <input name="event" type="text" placeholder="Date" class="datepicker" value="{{  post.date|date('Y-m-d H:i:s') }}">
+                        </div>
+
+                        <div class="field">
+                            <textarea name="content" placeholder="add comment or meeting point" >{{  post.contenu  }}</textarea>
+                        </div>
+
+                        <div class="field buttons">
+                            <button type="submit" class="btn btn-lg green-color">Edit</button>
+                        </div>
+
+                    </form>
+
+                </div><!-- end .page-content -->
+
+            </div><!-- end .col-sm-12 -->
+
+        </div><!-- end .row -->
+ <!-- end .container -->
+    <footer id="footer">
+
+        <div class="footer-copyright">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        Copyright by My ride
+                    </div>
+
+                </div><!-- end .row -->
+            </div><!-- end .container -->
+
+        </div><!-- end .footer-copyright -->
+
+    </footer><!-- end #footer -->
+
+    </div>
+
+</section><!-- end .main-content -->
+
+<!-- Javascript -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script type="text/javascript" src="{{ asset ('templates/js/bootstrap.min.js') }}"></script>
+<!-- Main jQuery -->
+<script type="text/javascript" src="{{ asset ('templates/js/jquery.main.js') }}"></script>
+<!-- Form -->
+<script type="text/javascript" src="{{ asset ('templates/js/jquery.idealforms.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset ('templates/js/jquery.idealselect.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset ('templates/js/jquery-ui-1.10.4.custom.min.js') }}"></script>
+<!-- Menu -->
+<script type="text/javascript" src="{{ asset ('templates/js/hoverIntent.js') }}"></script>
+<script type="text/javascript" src="{{ asset ('templates/js/superfish.js') }}"></script>
+<!-- Counter-Up  -->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script type="text/javascript" src="{{ asset ('templates/js/jquery.counterup.min.js') }}"></script>
+<!-- Rating  -->
+<script type="text/javascript" src="{{ asset ('templates/js/bootstrap-rating-input.min.js') }}"></script>
+<!-- Slicknav  -->
+<script type="text/javascript" src="{{ asset ('templates/js/jquery.slicknav.min.js') }}"></script>

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block body_content %}
+    {% block head %}
+        {% block stylesheet %}
+            {{ parent() }}
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <head>
+            <!-- Mobile Specific Meta -->
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- Add Favicon -->
+            <link rel="shortcut icon" href="img/logo/favicon.png">
+            <!-- Author Meta -->
+            <meta name="author" content="CodePixar">
+            <!-- Meta Description -->
+            <meta name="description" content="">
+            <!-- Meta Keyword -->
+            <meta name="keywords" content="">
+            <!-- meta character set -->
+            <meta charset="utf-8">
+            <!-- Site Title -->
+            <title>AjoutEvent</title>
+            <!--
+                CSS
+                ============================================= -->
+            <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset ('templates/css/font-awesome.min.css') }}">
+
+            <link rel="stylesheet" href="{{ asset ('templates/css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/et-line.css') }}">
+            <!-- <link rel="stylesheet" href="css/animate.css"> -->
+            <link rel="stylesheet" href="{{ asset ('templates/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ asset ('templates/css/flaticon.css') }}">
+            <!-- <link rel="stylesheet" href="css/minified.css"> -->
+        {% endblock %}
+    {% endblock %}
+
+
+    <div class="top-register container" style="border: solid;border-color: ghostwhite; background-color: antiquewhite">
+        <h3 class="light" style="text-align: center;color: red">Update</h3>
+        {{ form_start(form) }}
+        <p>{{ form_widget(form.type) }} </p>
+        <p>{{ form_widget(form.contenu) }} </p>
+        <div>
+            {{ form_widget(form.Save) }}
+        </div>
+
+
+        {{ form_end(form) }}
+    </div>
+
+
+
+
+{% endblock %}

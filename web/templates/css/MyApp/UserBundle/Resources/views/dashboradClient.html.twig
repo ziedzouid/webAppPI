@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html> <!--<![endif]-->
+{% block head %}
+    <head>
+        <meta charset="UTF-8"/>
+        <title>{% block title %} coolvoiturage {% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Theme Styles -->
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('GoVoyage/assets/plugins/bootstrap/css/bootstrap.min.css' ) }}">
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/font-awesome.min.css') }}">
+            <link href='{{ asset('GoVoyage/css/FontGoogle.css') }}' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/updates.css') }}">
+
+            <!-- Current Page Styles -->
+            <link rel="stylesheet" type="text/css"
+                  href="{{ asset('GoVoyage/components/revolution_slider/css/settings.css') }}" media="screen"/>
+            <link rel="stylesheet" type="text/css"
+                  href="{{ asset('GoVoyage/components/revolution_slider/css/style.css') }}" media="screen"/>
+            <link rel="stylesheet" type="text/css"
+                  href="{{ asset('GoVoyage/components/jquery.bxslider/jquery.bxslider.css') }}" media="screen"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('GoVoyage/components/flexslider/flexslider.css') }}"
+                  media="screen"/>
+
+            <!-- Main Style -->
+            <link id="main-style" rel="stylesheet" href="{{ asset('GoVoyage/css/style.css') }}">
+
+            <!-- Custom Styles -->
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/custom.css') }}">
+
+            <!-- Updated Styles -->
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/updates.css') }}">
+
+            <!-- Responsive Styles -->
+            <link rel="stylesheet" href="{{ asset('GoVoyage/css/responsive.css') }}">
+
+            <!-- CSS for IE -->
+            <!--[if lte IE 9]>
+            <link rel="stylesheet" type="text/css" href="{{ asset('GoVoyage/css/ie.css') }}">
+            <![endif]-->
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('GoVoyage/images/favicon.png') }}"/>
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta name="keywords" content="HTML5 Template"/>
+        <meta name="description" content="Travelo | Responsive HTML5 Travel Template">
+        <meta name="author" content="SoapTheme">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script type='text/javascript' src="{{ asset('GoVoyage/js/html5.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('GoVoyage/js/respond.js') }}"></script>
+        <![endif]-->
+
+
+    </head>
+{% endblock %}
+
+<body>
+<div class="page-title-container">
+    <div class="container">
+        <div class="page-title pull-left">
+            <h2 class="entry-title">My Account</h2>
+        </div>
+        <ul class="breadcrumbs pull-right">
+            <li><a href="{{ path('passenger_home') }}">HOME</a></li>
+            <li class="active">My Account</li>
+        </ul>
+    </div>
+</div>
+<section id="content" class="gray-area">
+    <div class="container">
+        <div id="main">
+            <div class="tab-container full-width-style arrow-left dashboard">
+                <ul class="tabs">
+                    <li class="active"><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i>Dashboard</a>
+                    </li>
+                    <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>Profile</a>
+                    </li>
+                    <li class=""><a data-toggle="tab" href="#booking"><i class="soap-icon-businessbag circle"></i>Posts</a>
+                    </li>
+                    <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>statistique</a>
+                    </li>
+                    <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-conference circle"></i>CoOl
+                            Stories</a></li>
+                    <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-settings circle"></i>Settings</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="dashboard" class="tab-pane fade in active">
+                        <h1 class="no-margin skin-color">Hi Zied, Welcome to cOOlvOiturage!</h1>
+                        <p>All your reservations booked with us will appear here and you’ll be able to manage
+                            everything!</p>
+                        <br/>
+                        <div class="notification-area">
+                            <div class="info-box block">
+                                <span class="close"></span>
+                                <p>This is your Dashboard, the place to check your Profile, respond to Reservation
+                                    Requests, view upcoming Trip Information, and much more.</p>
+                                <br/>
+                                <ul class="circle">
+                                    <li><span class="skin-color">Learn How It Works</span> — Watch a short video that
+                                        shows you how Travelo works.
+                                    </li>
+                                    <li><span class="skin-color">Get Help</span> — View our help section and FAQs to get
+                                        started on Travelo.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                            <h2>Notifications</h2>
+                        <div class="row block">
+                            {% for noti in notif %}
+                            <div class="col-md-6 notifications">
+
+                                <a href="#">
+                                    <div class="icon-box style1 fourty-space">
+                                        <i class="soap-icon-plane-right takeoff-effect yellow-bg"></i>
+                                        <span class="time pull-right">{{noti.date|date('Y-m-d H:i:s')  }}</span>
+
+                                        <p class="box-title"><span class="price">{{ noti.subject }}</span>
+                                        </p>
+                                        <p class="box-title">{{ noti.message }}</span>
+                                        </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                              {% endfor %}
+
+                            <div class="col-md-6">
+                                <h2>Recent Activity</h2>
+                                <div class="recent-activity">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon soap-icon-plane-right circle takeoff-effect yellow-color"></i>
+                                                <span class="price"><small>avg/person</small>$120</span>
+                                                <h4 class="box-title">
+                                                    Indianapolis to Paris
+                                                    <small>Oneway flight</small>
+                                                </h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon soap-icon-car circle red-color"></i>
+                                                <span class="price"><small>per day</small>$45.39</span>
+                                                <h4 class="box-title">
+                                                    Economy Car
+                                                    <small>bmw mini</small>
+                                                </h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon soap-icon-cruise circle green-color"></i>
+                                                <span class="price"><small>from</small>$578</span>
+                                                <h4 class="box-title">
+                                                    Jacksonville to Asia
+                                                    <small>4 nights</small>
+                                                </h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon soap-icon-hotel circle blue-color"></i>
+                                                <span class="price"><small>Avg/night</small>$620</span>
+                                                <h4 class="box-title">
+                                                    Hilton Hotel &amp; Resorts
+                                                    <small>Paris france</small>
+                                                </h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon soap-icon-hotel circle blue-color"></i>
+                                                <span class="price"><small>avg/night</small>$170</span>
+                                                <h4 class="box-title">
+                                                    Roosevelt Hotel
+                                                    <small>new york</small>
+                                                </h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon soap-icon-plane-right circle takeoff-effect yellow-color"></i>
+                                                <span class="price"><small>avg/person</small>$348</span>
+                                                <h4 class="box-title">
+                                                    Mexico to England
+                                                    <small>return flight</small>
+                                                </h4>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="button green btn-small full-width">VIEW ALL ACTIVITIES</a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>Benefits of Tavelo Account</h4>
+                                <ul class="benefits triangle hover">
+                                    <li><a href="#">Faster bookings with lesser clicks</a></li>
+                                    <li><a href="#">Track travel history &amp; manage bookings</a></li>
+                                    <li class="active"><a href="#">Manage profile &amp; personalize experience</a></li>
+                                    <li><a href="#">Receive alerts &amp; recommendations</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 previous-bookings image-box style14">
+                                <h4>Your Previous Bookings</h4>
+                                <article class="box">
+                                    <figure class="no-padding">
+                                        <a title="" href="#">
+                                            <img alt="" src="http://placehold.it/63x59" width="63" height="59">
+                                        </a>
+                                    </figure>
+                                    <div class="details">
+                                        <h5 class="box-title"><a href="#">Half-Day Island Tour</a>
+                                            <small class="fourty-space"><span class="price">$35</span> Family Package
+                                            </small>
+                                        </h5>
+                                    </div>
+                                </article>
+                                <article class="box">
+                                    <figure class="no-padding">
+                                        <a title="" href="#">
+                                            <img alt="" src="http://placehold.it/63x59" width="63" height="59">
+                                        </a>
+                                    </figure>
+                                    <div class="details">
+                                        <h5 class="box-title"><a href="#">Ocean Park Tour</a>
+                                            <small class="fourty-space"><span class="price">$26</span> Per Person
+                                            </small>
+                                        </h5>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Need Travelo Help?</h4>
+                                <div class="contact-box">
+                                    <p>We would be more than happy to help you. Our team advisor are 24/7 at your
+                                        service to help you.</p>
+                                    <address class="contact-details">
+                                        <span class="contact-phone"><i
+                                                    class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                        <br>
+                                        <a class="contact-email" href="#">help@travelo.com</a>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="profile" class="tab-pane fade">
+
+                        <div class="view-profile">
+                            <article class="image-box style2 box innerstyle personal-details">
+                                <figure>
+
+
+                                    <a title="" href="#"><img width="270" height="263" alt=""
+                                                              src="{{ asset('templates/img/avatar.jpg') }}"> </a>
+                                </figure>
+                                <div class="details">
+                                    <a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT
+                                        PROFILE</a>
+
+                                    <h2 class="box-title fullname" id="full_name">{{ person.username }} </h2>
+                                    <dl class="term-description" id="profile_description">
+                                        <dt id="d1">E-mail:</dt>
+                                        <dd id="dd_email"> {{ person.email }}</dd>
+                                        <dt id="d2">first name:</dt>
+                                        <dd id="dd_firstname">{{ person.prenom }}</dd>
+                                        <dt id="d3">last name:</dt>
+                                        <dd id="dd_lastname">{{ person.nom }}</dd>
+                                        <dt id="d4">sexe:</dt>
+                                        <dd id="dd_numeroPassport">{{ person.sexe }}</dd>
+                                        <dt id="d5">Telephone:</dt>
+                                        <dd id="dd_nationalite">{{ person.telephone }}</dd>
+                                        <dt>Last login:</dt>
+                                        <dd id="d6">{{ person.lastLogin|date('Y-m-d') }}</dd>
+
+                                    </dl>
+                                </div>
+                            </article>
+                            <hr>
+
+                            <hr>
+                            <h2>Today’s Suggestions</h2>
+                            <div class="suggestions image-carousel style2" data-animation="slide" data-item-width="170"
+                                 data-item-margin="22">
+                                <ul class="slides">
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="{{ asset('GoVoyage/images/themes/Dashboard/suggestion1.png') }}"
+                                                 alt=""/>
+                                        </a>
+                                        <h5 class="caption">Adventure</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="{{ asset('GoVoyage/images/themes/Dashboard/suggestion2.png') }}"
+                                                 alt=""/>
+                                        </a>
+                                        <h5 class="caption">Beaches &amp; Sun</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="{{ asset('GoVoyage/images/themes/Dashboard/suggestion3.png') }}"
+                                                 alt=""/>
+                                        </a>
+                                        <h5 class="caption">Casinos</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="{{ asset('GoVoyage/images/themes/Dashboard/suggestion4.png') }}"
+                                                 alt=""/>
+                                        </a>
+                                        <h5 class="caption">Family Fun</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="{{ asset('GoVoyage/images/themes/Dashboard/suggestion5.png') }}"
+                                                 alt=""/>
+                                        </a>
+                                        <h5 class="caption">History</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="{{ asset('GoVoyage/images/themes/Dashboard/suggestion1.png') }}"
+                                                 alt=""/>
+                                        </a>
+                                        <h5 class="caption">Adventure</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4>Benefits of Tavelo Account</h4>
+                                    <ul class="benefits triangle hover">
+                                        <li><a href="#">Faster bookings with lesser clicks</a></li>
+                                        <li><a href="#">Track travel history &amp; manage bookings</a></li>
+                                        <li class="active"><a href="#">Manage profile &amp; personalize experience</a>
+                                        </li>
+                                        <li><a href="#">Receive alerts &amp; recommendations</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 previous-bookings image-box style14">
+                                    <h4>Your Previous Bookings</h4>
+                                    <article class="box">
+                                        <figure class="no-padding">
+                                            <a title="" href="#">
+                                                <img alt=""
+                                                     src="{{ asset('GoVoyage/images/themes/Dashboard/booking1.png') }}"
+                                                     width="63" height="59">
+                                            </a>
+                                        </figure>
+                                        <div class="details">
+                                            <h5 class="box-title"><a href="#">Half-Day Island Tour</a>
+                                                <small class="fourty-space"><span class="price">$35</span> Family
+                                                    Package
+                                                </small>
+                                            </h5>
+                                        </div>
+                                    </article>
+                                    <article class="box">
+                                        <figure class="no-padding">
+                                            <a title="" href="#">
+                                                <img alt=""
+                                                     src="{{ asset('GoVoyage/images/themes/Dashboard/booking2.png') }}"
+                                                     width="63" height="59">
+                                            </a>
+                                        </figure>
+                                        <div class="details">
+                                            <h5 class="box-title"><a href="#">Ocean Park Tour</a>
+                                                <small class="fourty-space"><span class="price">$26</span> Per Person
+                                                </small>
+                                            </h5>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4>Need Travelo Help?</h4>
+                                    <div class="contact-box">
+                                        <p>We would be more than happy to help you. Our team advisor are 24/7 at your
+                                            service to help you.</p>
+                                        <address class="contact-details">
+                                            <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                            <br>
+                                            <a class="contact-email" href="#">help@travelo.com</a>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-profile">
+                            <form class="edit-profile-form"  action="{{ path("edit_profile") }}" method="POST">
+                                <h2>Personal Details</h2>
+                                <div class="col-sm-9 no-padding no-float">
+                                    <div class="row form-group">
+                                        <div class="col-sms-6 col-sm-6">
+                                            <label>First Name</label>
+                                            <input type="text" class="input-text full-width" name="firstname" placeholder="" value="{{ person.nom }}">
+                                        </div>
+                                        <div class="col-sms-6 col-sm-6">
+                                            <label>Last Name</label>
+                                            <input type="text" class="input-text full-width" name="lastname" placeholder="" value="{{ person.prenom }}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-sms-6 col-sm-6">
+                                            <label>Email Address</label>
+                                            <input type="text" class="input-text full-width" name="email" placeholder="" value="{{ person.email }}">
+                                        </div>
+                                        <div class="col-sms-6 col-sm-6">
+                                            <label>Username</label>
+                                            <input type="text" class="input-text full-width" name="userrname" placeholder="" value="{{ person.username }}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-sms-6 col-sm-6">
+                                            <label>sexe</label>
+                                            <input type="text" class="input-text full-width" name="sexe" placeholder="" value="{{ person.sexe }}">
+
+                                        </div>
+                                        <div class="col-sms-6 col-sm-6">
+                                            <label>Phone Number</label>
+                                            <input type="text" class="input-text full-width" name="tel" placeholder="" value="{{ person.telephone }}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-xs-12">Date of Birth</label>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option value="">date</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option value="">month</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option value="">year</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <h2>Upload Profile Photo</h2>
+                                    <div class="row form-group">
+                                        <div class="col-sms-12 col-sm-6 no-float">
+                                            <div class="fileinput full-width">
+                                                <input type="file" class="input-text" data-placeholder="select image/s">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="from-group">
+                                        <button type="submit" class="btn-medium col-sms-6 col-sm-4">UPDATE SETTINGS
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="booking" class="tab-pane fade">
+                       {% block insaf %} <h2>yOur pOsts!</h2>
+                        <h3>{{ user.username }}</h3>
+
+                        {% for post in posts %}
+                        <div class="w3-container" style="width: 30px%; ">
+
+                            <div class="cards" style="width:30%">
+                                <header class="w3-container w3-light-white" style="background-color:Window">
+                                    <p>Posted on {% if post.Date %}{{ post.date|date('Y-m-d H:i:s') }}{% endif %} </p>
+                                </header>
+                                <div class="w3-container">
+
+                                    <hr>
+                                    <img src="{{asset('templates/img/insaf.jpg')}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                                    <p>Hello I'm searching For a ride from {{ post.depart }} to {{ post.arrive }}
+                                        I appreciate if our meeting woud be in {{ post.contenu }} </p><br>
+                                </div>
+
+                                <a href="{{ path('deletPost',{ 'idPost':post.id}) }}" class="button" style="background-color: #a70b14; ">Delete</a>
+                                <a href="{{ path('editPost',{ 'idPost':post.id}) }}" class="button" style="background-color: #a70b14">Edit</a>
+
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    {% endblock insaf %}
+                    <div id="wishlist" class="tab-pane fade">
+                        <h2>Your Stats</h2>
+
+                    </div>
+                    <!-- Majd -->
+                    <div id="travel-stories" class="tab-pane fade">
+                        <h2>Partagez votre experience</h2>
+                        <div class="col-sm-9 no-float no-padding">
+                            <form method="post" action="">
+                                <div class="row form-group">
+                                    <div class="col-sms-6 col-sm-6">
+                                        <label>Titre</label>
+                                        <input type="text" class="input-text full-width" name="titre">
+                                    </div>
+                                    <div class="col-sms-6 col-sm-6">
+                                        <label>Date</label>
+                                        <input type="date" class="input-text full-width" name="date">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sms-6 col-sm-6">
+                                        <label>Theme</label>
+                                        <div class="selector full-width">
+                                            <select name="theme">
+                                                <option value="Family">Family</option>
+                                                <option value="Romance">Romance</option>
+                                                <option value="Adventure">Adventure</option>
+                                                <option value="Beach">Beach</option>
+                                                <option value="Wildlife">Wildlife</option>
+                                                <option value="Island & parks">Island & parks</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sms-6 col-sm-6">
+                                        <label>Avis</label>
+                                        <input type="number" class="input-text full-width" name="rating">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contenue</label>
+                                    <textarea rows="6" class="input-text full-width"
+                                              placeholder="please tell us about you" name="contenue"></textarea>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <h4>Do you have photos to share?
+                                        <small>(Optional)</small>
+                                    </h4>
+                                    <div class="fileinput col-sm-6 no-float no-padding">
+                                        <input type="file" class="input-text" data-placeholder="select image/s"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group col-sm-5 col-md-4 no-float no-padding no-margin">
+                                    <button type="submit" class="btn-medium full-width">Ajouter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /Majd -->
+                    <div id="settings" class="tab-pane fade">
+                        <h2>Account Settings</h2>
+                        <h5 class="skin-color">Change Your Password</h5>
+                        <form lpformnum="5">
+                            <div class="row form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <label>Old Password</label>
+                                    <input type="text" id="current_password" class="input-text full-width">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <label>Enter New Password</label>
+                                    <input type="text" id="new_password1" class="input-text full-width">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <label>Confirm New password</label>
+                                    <input type="text" id="new_password2" class="input-text full-width">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button id="update_password" class="btn-medium">UPDATE PASSWORD</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <h5 class="skin-color">Change Your Email</h5>
+                        <form>
+                            <div class="row form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <label>Old email</label>
+                                    <input type="text" id="oldMail" class="input-text full-width">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <label>Enter New Email</label>
+                                    <input type="text" id="newMail" class="input-text full-width">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <label>Confirm New Email</label>
+                                    <input type="text" id="newMail2" class="input-text full-width">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button id="update_mail" class="btn-medium">UPDATE EMAIL ADDRESS</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <h5 class="skin-color">Send Me Emails When</h5>
+                        <form>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Travelo has periodic offers and deals on really cool
+                                    destinations.
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Travelo has fun company news, as well as periodic emails.
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> I have an upcoming reservation.
+                                </label>
+                            </div>
+                            <button class="btn-medium uppercase">Update All Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Javascript -->
+<script type="text/javascript" src="{{ asset('GoVoyage/js/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/jquery.noconflict.js') }}"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/modernizr.2.7.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/jquery-migrate-1.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/jquery.placeholder.js') }}"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/jquery-ui.1.10.4.min.js') }}"></script>
+
+<!-- Twitter Bootstrap -->
+<script type="text/javascript" src="{{ asset('GoVoyage/js/bootstrap.js') }}"></script>
+
+<!-- load revolution slider scripts -->
+<script type="text/javascript"
+        src="{{ asset('GoVoyage/components/revolution_slider/js/jquery.themepunch.tools.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('GoVoyage/components/revolution_slider/js/jquery.themepunch.revolution.min.js') }}"></script>
+
+<!-- load BXSlider scripts -->
+<script type="text/javascript" src="{{ asset('GoVoyage/components/jquery.bxslider/jquery.bxslider.min.js') }}"></script>
+
+<!-- load FlexSlider scripts -->
+<script type="text/javascript" src={{ asset('GoVoyage/components/flexslider/jquery.flexslider-min.js') }}></script>
+
+<!-- Google Map Api -->
+<script type='text/javascript' src="//maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/gmap3.min.js') }}"></script>
+
+<!-- parallax -->
+<script type="text/javascript" src="{{ asset('GoVoyage/js/jquery.stellar.min.js') }}"></script>
+
+<!-- waypoint -->
+<script type="text/javascript" src="{{ asset('GoVoyage/js/waypoints.min.js') }}"></script>
+
+<!-- load page Javascript -->
+<script type="text/javascript" src="{{ asset('GoVoyage/js/theme-scripts.js') }}"></script>
+<script type="text/javascript" src="{{ asset('GoVoyage/js/scripts.js') }}"></script>
+<!--  script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script-->
+
+<script type="text/javascript">
+
+   /* jQuery(document).ready(function () {
+        jQuery("#edit_profile").click(function () {
+            //jQuery( "#divContent" ).empty();
+            var email = jQuery("#dd_email").html();
+            var firstname = jQuery("#dd_firstname").html();
+            var lastname = jQuery("#dd_lastname").html();
+            var numeroPassport = jQuery("#dd_numeroPassport").html();
+            var nationalite = jQuery("#dd_nationalite").html();
+            var about_you = jQuery("#about_you").html();
+            var formElement = "<form action=\"{{ path('edit_profile') }}\" method=\"POST\">";
+
+            jQuery("#edit_profile").remove();
+            jQuery("#dd_email").remove();
+            jQuery("#dd_firstname").remove();
+            jQuery("#dd_lastname").remove();
+            jQuery("#dd_numeroPassport").remove();
+            jQuery("#dd_nationalite").remove();
+            //jQuery("#about_you").remove();
+
+            jQuery("#profile_description").prepend(formElement);
+            jQuery("#d1").after("<input  type=\"text\" class=\"input-text mid-width\" id=\"email\" name=\"email\" placeholder=\"E-mail\" value=\"" + email + "\"/>");
+            jQuery("#d2").after("<input  type=\"text\" class=\"input-text mid-width\" id=\"firstname\" name=\"firstname\" placeholder=\"Firstname\" value=\"" + firstname + "\"/>");
+            jQuery("#d3").after("<input  type=\"text\" class=\"input-text mid-width\" id=\"lastname\" name=\"lastname\" placeholder=\"lastname\" value=\"" + lastname + "\"/>");
+            jQuery("#d4").after("<input  type=\"text\" class=\"input-text mid-width\" id=\"numeroPassport\" name=\"numeroPassport\" placeholder=\"sexe\" value=\"" + numeroPassport + "\"/>");
+            jQuery("#d5").after("<input  type=\"text\" class=\"input-text mid-width\" id=\"nationalite\" name=\"nationalite\" placeholder=\"telephone\" value=\"" + nationalite + "\"/>");
+            jQuery("#d6").after("<br/><input  type=\"submit\"  id=\"_submit\" name=\"_submit\" style=\"height: 30px;width:130px;padding: 0 20px;font-size: 0.8333em;line-height: 19px;display: inline-block;     background: #7DB921; color: #fff; cursor: pointer;padding-left: 10px; padding-right: 10px;\"  value=\"Save\"/> </form>");
+            //  jQuery("#d6").after("<input  type=\"submit\" class=\"full-width btn-medium\" id=\"_submit\" name=\"_submit\" style=\"height: 36px;line-height: 36px;margin-bottom: 10px;font-size: 1.3333em;font-weight: 400;background: #98ce44;color: white; width: 100%;\" value=\""+"Save"+"\"/></form>");
+            //console.log(email + 2);
+        });
+    });*/
+   tjq(document).ready(function() {
+       tjq("#profile .edit-profile-btn").click(function(e) {
+           e.preventDefault();
+           tjq(".view-profile").fadeOut();
+           tjq(".edit-profile").fadeIn();
+       });
+
+       setTimeout(function() {
+           tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
+       }, 10000);
+   });
+   tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
+       tjq(".view-profile").show();
+       tjq(".edit-profile").hide();
+   });
+
+
+</script>
+</body>
+</html>
+

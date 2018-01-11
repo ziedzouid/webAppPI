@@ -1,0 +1,98 @@
+{% extends '@MyAppUser/Passager/passager_home.html.twig' %}
+
+{% block body_content %}
+
+    <section class="main-content">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="page-sub-title textcenter">
+                        <h2>FEEDBACK</h2>
+                        <div class="line"></div>
+                    </div><!-- end .page-sub-title -->
+
+                </div><!-- end .col-md-12 col-sm-12 col-xs-12 -->
+
+                <div id="div1" class="col-md-9 col-sm-12 col-xs-12">
+
+                    <div class="page-content">
+
+                        <form method="POST" id="cantact-form" action="" novalidate autocomplete="off" class="idealforms">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <center>
+                                        <label style="color: blue">1. How convenient is our application to use ?</label>
+                                    </center>
+
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="range range-primary">
+                                        <input type="range" name="range1" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+                                        <output id="rangePrimary">50</output>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <center>
+                                        <label style="color: green">2. How easy is it to find the information you are looking for in our apps ?</label>
+                                    </center>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="range range-info">
+                                        <input type="range" name="range2" min="1" max="100" value="50" onchange="rangeInfo.value=value">
+                                        <output id="rangeInfo">50</output>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <center>
+                                        <label style="color: darkred">3. How likely are you to recommend our apps to others ?</label>
+                                    </center>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="range range-danger">
+                                        <input type="range" name="range3" min="1" max="100" value="50" onchange="rangeDanger.value=value">
+                                        <output id="rangeDanger">50</output>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="full-fild">
+                                <textarea name="reclamation" id="message" cols="5" placeholder="Votre Reclamation" rows="4" required ></textarea>
+                            </div>
+
+                            <div class="field buttons">
+                                <button type="submit" class="btn btn-lg blue-color" id="sucess">Submit</button>
+                            </div>
+
+                            <span id="invalid"></span>
+
+                        </form>
+
+                    </div><!-- end .page-content -->
+
+                </div><!-- end .col-md-9 -->
+
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+
+    </section><!-- end .main-content -->
+
+    <script type="text/javascript">
+        $("#sucess").click(function(){
+            $("#div1").hide();})
+    </script>
+
+
+{% endblock %}

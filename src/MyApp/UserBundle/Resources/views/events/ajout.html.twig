@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body_content %}
+{% block head %}
+
+    {% block stylesheet %}
+        {{ parent() }}
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset ('templates/css/font-awesome.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset ('templates/css/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset ('templates/css/et-line.css') }}">
+        <!-- <link rel="stylesheet" href="css/animate.css"> -->
+        <link rel="stylesheet" href="{{ asset ('templates/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset ('templates/css/slicknav.css') }}">
+        <link rel="stylesheet" href="{{ asset ('templates/css/flaticon.css') }}">
+
+    {% endblock %}
+{% endblock %}
+
+    <!-- <link rel="stylesheet" href="css/minified.css"> -->
+
+
+
+
+<div class="top-register container" style="border: solid;border-color: ghostwhite; background-color: antiquewhite">
+    <h2 class="light" style="text-align: center;color: red">Aim to create Your Event</h2>
+    <h4 style="text-align: center; size: 30px">ADD your Event here!!</h4>
+    <form action="{{ path('conducteur_event_ajout_home') }}  " novalidate autocomplete="off" method="post">
+        <p><input type="text" placeholder="Type" id="type" name="type" placeholder="Enter the Event Type"></p>
+        <p class="flex space-between no-flex-xs"><input type="text"  name="contenu" id="contenu" placeholder="Event Description">
+        <div class="select-ct">
+        </div>
+
+    <button type="submit" class="btn mt-20" style="margin: 20px 500px;width: 150px;background-color: #4CAF50">Add Here!!</button>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

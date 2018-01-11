@@ -1,0 +1,44 @@
+feedback_index:
+    path:     /
+    defaults: { _controller: "MyAppUserBundle:Feedback:index" }
+    methods:  GET
+
+feedback_show:
+    path:     /{id}/show
+    defaults: { _controller: "MyAppUserBundle:Feedback:show" }
+    methods:  GET
+
+feedback_new:
+    path:     /new
+    defaults: { _controller: "MyAppUserBundle:Feedback:new" }
+    methods:  [GET, POST]
+
+feedback_newfeed:
+        path:     /newfeed
+        defaults: { _controller: "MyAppUserBundle:Feedback:newfeed" }
+        methods:  [GET, POST]
+
+feedback_success:
+                path:     /success
+                defaults: { _controller: "MyAppUserBundle:Feedback:feedsucces" }
+                methods:  [GET, POST]
+
+feedback_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MyAppUserBundle:Feedback:edit" }
+    methods:  [GET, POST]
+
+feedback_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MyAppUserBundle:Feedback:delete" }
+    methods:  DELETE
+
+show_feed:
+    path:     /feedshow
+    defaults: { _controller: MyAppUserBundle:Feedback:showfeedback }
+    methods:  [GET, POST]
+
+feedback_deleteAdmin:
+    path:     /{id}/deleteadmin
+    defaults: { _controller: "MyAppUserBundle:Feedback:deletefeedback" }
+    methods:  [GET, POST]

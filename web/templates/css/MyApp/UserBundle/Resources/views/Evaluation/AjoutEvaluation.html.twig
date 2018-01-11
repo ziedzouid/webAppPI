@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body_content %}
+
+    <style>
+        .afr {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #0f0f0f;
+        }
+
+
+    </style>
+    <div class="afr" style="text-align: center ;width: 80% ;margin: auto">
+<h1>Ajouter Evaluation</h1>
+    {{ form_start(form) }}
+
+
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

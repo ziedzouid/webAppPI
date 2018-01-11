@@ -19,27 +19,21 @@ class Evenement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=100, nullable=false)
      */
-    public $type;
+    private $type;
 
     /**
      * @var string
      *
      * @ORM\Column(name="contenu", type="text", nullable=false)
      */
-    public $contenu;
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="user_id",type="integer",nullable=true)
-     */
-    public $user_id;
+    private $contenu;
 
     /**
      * Get id
