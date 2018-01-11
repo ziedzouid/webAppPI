@@ -98,6 +98,8 @@ class ActualiteController extends Controller
     public function newActAction(Request $request)
     {
         $actualite = new Actualite();
+        $circle = $this->getDoctrine()->getManager()->getRepository('MyAppUserBundle:Circle')->find(1);
+
 
         if ($request->isMethod('POST')) {
             $actualite->setRubrique($request->get('rubrique'));
@@ -106,6 +108,7 @@ class ActualiteController extends Controller
             $actualite->setType($imgpath);
             $actualite->setDateActualite(new \DateTime('now'));
             $actualite->setUser($this->getUser());
+            $actualite->setCircle($circle);
             $em = $this->getDoctrine()->getManager();
             $em->persist($actualite);
             $em->flush();
